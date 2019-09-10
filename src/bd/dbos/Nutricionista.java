@@ -8,15 +8,19 @@ public class Nutricionista {
 		
 	}
 	
-	public Nutricionista(int codigo, String cpf, String telefone, String nome) throws Exception {
+	public Nutricionista(int codigo,  String nome, String cpf, String telefone) throws Exception {
 		this.setCodigo(codigo);
+		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setTelefone(telefone);
-		this.setNome(nome);
 	}
 	
 	public int getCodigo() {
 		return this.codigo;
+	}
+	
+	public String getNome() {
+		return this.nome;
 	}
 	
 	public String getCpf() {
@@ -27,9 +31,6 @@ public class Nutricionista {
 		return this.telefone;
 	}
 	
-	public String getNome() {
-		return this.nome;
-	}
 	
 	public void setCodigo(int codigo) throws Exception {
 		if(codigo <= 0 || codigo > 5000) {
@@ -49,5 +50,54 @@ public class Nutricionista {
 	
 	public void setNome(String nome) throws Exception {
 		this.nome = nome;
+	}
+	
+	public String toString() {
+		String ret = "";
+		ret+= "Código:" + this.codigo+"/n";
+		ret+= "Nome:" + this.nome+"/n";
+		ret+= "Cpf:" + this.cpf+"/n";
+		ret+= "Telefone:" + this.telefone+"/n";
+		
+		return ret;
+	}
+	
+	public boolean equals (Object obj) {
+		if(this==obj)
+			return true;
+		if(obj == null)
+			return false;
+		if(!(obj instanceof Nutricionista))
+			return false;
+		
+		Nutricionista nutri = (Nutricionista) obj;
+		if(this.codigo != nutri.codigo)
+			return false;
+		if(!(this.nome.equals(nutri.nome)))
+			return false;
+		if(!(this.cpf.equals(nutri.cpf)))
+			return false;
+		if(!(this.telefone.equals(nutri.telefone)))
+			return false;
+		return true;		
+	}
+	
+	public Nutricionista(Nutricionista modelo) {
+		this.codigo = modelo.codigo;
+		this.nome = modelo.nome;
+		this.cpf = modelo.cpf;
+		this.telefone = modelo.telefone;
+		
+	}
+	
+	public Object clone() {
+		Nutricionista ret = null;
+		try {
+			ret = new Nutricionista(this);
+		}
+		catch(Exception ex) 
+		{}
+		
+		return ret;
 	}
 }
