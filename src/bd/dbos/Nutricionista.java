@@ -2,16 +2,17 @@ package bd.dbos;
 
 public class Nutricionista {
 	private int codigo;
-	private String cpf, telefone, nome;
+	private String email, cpf, telefone, nome;
 	
 	public Nutricionista() {
 		
 	}
 	
-	public Nutricionista(int codigo,  String nome, String cpf, String telefone) throws Exception {
+	public Nutricionista(int codigo,  String nome, String cpf, String email, String telefone) throws Exception {
 		this.setCodigo(codigo);
 		this.setNome(nome);
 		this.setCpf(cpf);
+		this.setEmail(email);
 		this.setTelefone(telefone);
 	}
 	
@@ -25,6 +26,10 @@ public class Nutricionista {
 	
 	public String getCpf() {
 		return this.cpf;
+	}
+	
+	public String getEmail() {
+		return this.email;
 	}
 	
 	public String getTelefone() {
@@ -42,6 +47,10 @@ public class Nutricionista {
 	
 	public void setCpf(String cpf) throws Exception {
 		this.cpf = cpf;
+	}
+	
+	public void setEmail(String email) throws Exception{
+		this.email = email;
 	}
 	
 	public void setTelefone(String telefone) throws Exception {
