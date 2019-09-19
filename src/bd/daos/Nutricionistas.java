@@ -14,7 +14,7 @@ public class Nutricionistas {
 			String sql;
 			sql = "select * from Nutricionista where codNutricionista = ?";
 			BDSQLServer.COMANDO.prepareStatement(sql);
-			BDSQLServer.COMANDO.setInt(1,"");
+			BDSQLServer.COMANDO.setInt(1,codigo);
 			MeuResultSet resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery();
 			retorno = resultado.first();
 		}
