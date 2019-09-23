@@ -2,18 +2,19 @@ package bd.dbos;
 
 public class Nutricionista {
 	private int codigo;
-	private String email, cpf, telefone, nome;
+	private String email, cpf, telefone, nome, senha;
 	
 	public Nutricionista() {
 		
 	}
 	
-	public Nutricionista(int codigo,  String nome, String cpf, String email, String telefone) throws Exception {
+	public Nutricionista(int codigo,  String nome, String cpf, String email, String telefone, String senha) throws Exception {
 		this.setCodigo(codigo);
 		this.setNome(nome);
 		this.setCpf(cpf);
 		this.setEmail(email);
 		this.setTelefone(telefone);
+		this.setSenha(senha);
 	}
 	
 	public int getCodigo() {
@@ -34,6 +35,10 @@ public class Nutricionista {
 	
 	public String getTelefone() {
 		return this.telefone;
+	}
+	
+	public String getSenha() {
+		return this.senha;
 	}
 	
 	
@@ -61,12 +66,17 @@ public class Nutricionista {
 		this.nome = nome;
 	}
 	
+	public void setSenha(String senha) throws Exception{
+		this.senha = senha;
+	}
+	
 	public String toString() {
 		String ret = "";
 		ret+= "Código:" + this.codigo+"/n";
 		ret+= "Nome:" + this.nome+"/n";
 		ret+= "Cpf:" + this.cpf+"/n";
 		ret+= "Telefone:" + this.telefone+"/n";
+		ret += "Senha:" + this.senha+"/n";
 		
 		return ret;
 	}
@@ -88,6 +98,8 @@ public class Nutricionista {
 			return false;
 		if(!(this.telefone.equals(nutri.telefone)))
 			return false;
+		if(!(this.senha.equals(nutri.senha)))
+			return false;
 		return true;		
 	}
 	
@@ -96,7 +108,7 @@ public class Nutricionista {
 		this.nome = modelo.nome;
 		this.cpf = modelo.cpf;
 		this.telefone = modelo.telefone;
-		
+		this.senha = modelo.senha;
 	}
 	
 	public Object clone() {

@@ -9,6 +9,8 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class janela1 {
 
@@ -69,6 +71,10 @@ public class janela1 {
 		frame.getContentPane().add(txtSenha);
 		
 		JButton btnLogar = new JButton("Entrar");
+		btnLogar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnLogar.setBounds(298, 211, 89, 23);
 		frame.getContentPane().add(btnLogar);
 		
@@ -77,6 +83,12 @@ public class janela1 {
 		frame.getContentPane().add(lblCadastro);
 		
 		JButton btnGoCadastro = new JButton("Cadastrar-se");
+		btnGoCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Cadastro janelaCad = new Cadastro();
+				janelaCad.setVisible(true);
+			}
+		});
 		btnGoCadastro.setBounds(330, 328, 101, 23);
 		frame.getContentPane().add(btnGoCadastro);
 	}
