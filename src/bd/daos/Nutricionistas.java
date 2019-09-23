@@ -35,13 +35,14 @@ public class Nutricionistas {
 		try 
 		{
 			String sql;
-			sql = "insert into Nutricionista values(?, ?, ?, ?, ?)";
+			sql = "insert into Nutricionista values(?, ?, ?, ?, ?, ?)";
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			BDSQLServer.COMANDO.setInt(1, nutri.getCodigo());
 			BDSQLServer.COMANDO.setString(2, nutri.getNome());
 			BDSQLServer.COMANDO.setString(3, nutri.getCpf());
 			BDSQLServer.COMANDO.setString(4, nutri.getEmail());
 			BDSQLServer.COMANDO.setString(5, nutri.getTelefone());
+			BDSQLServer.COMANDO.setString(6, nutri.getSenha());
 			
 			BDSQLServer.COMANDO.executeUpdate();
 			BDSQLServer.COMANDO.commit();
@@ -64,12 +65,16 @@ public class Nutricionistas {
 					+ "SET Nome = ?"
 					+ "SET Cpf = ?"
 					+ "SET Email = ?"
-					+ "SET Telefone = ?";
+					+ "SET Telefone = ?"
+					+ "SET Senha = ?"
+					+ "where codNutricionista = ?"; 
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			BDSQLServer.COMANDO.setString(1, nutri.getNome());
 			BDSQLServer.COMANDO.setString(2, nutri.getCpf());
 			BDSQLServer.COMANDO.setString(3, nutri.getEmail());
 			BDSQLServer.COMANDO.setString(4, nutri.getTelefone());
+			BDSQLServer.COMANDO.setString(5, nutri.getSenha());
+			BDSQLServer.COMANDO.setInt(6, nutri.getCodigo());
 			
 			BDSQLServer.COMANDO.executeUpdate();
 			BDSQLServer.COMANDO.commit();
@@ -96,7 +101,8 @@ public class Nutricionistas {
 					resultado.getString("Nome"), 
 					resultado.getString("Cpf"),
 					resultado.getString("Email"),
-					resultado.getString("telefone"));
+					resultado.getString("telefone"),
+					resultado.getString("senha"));
 		}
 		catch(Exception ex) 
 		{

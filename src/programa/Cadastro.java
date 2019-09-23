@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import bd.daos.*;
 import bd.dbos.*;
 import cripto.*;
+import javax.swing.JOptionPane;
 
 public class Cadastro extends JFrame {
 
@@ -135,18 +136,49 @@ public class Cadastro extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					Criptografia.Cripto(txtPass.getText());
-					String telefone = "(" + txtDDD.getText() + ")" + txtTel.getText();
-					Nutricionista 
-				}
-				catch(Exception ex) {
-					
+				
+				boolean liberado = true; 
+				
+				if(Integer.parseInt(txtCod.getText()) > 5000 || Integer.parseInt(txtCod.getText()) < 1) {
+					txtCod.setText("");
+					JOptionPane.showMessageDialog(null,"Insira um código de 1 a 5000");	
+					liberado = false;
 				}
 				
+				if((txtCod.getText().trim().equals("")) || (txtNome.getText().trim().equals("")) ||
+				(txtCpf.getText().trim().equals("")) || (txtEmail.getText().trim().equals("")) || 
+				(txtDDD.getText().trim().equals("")) || (txtTel.getText().trim().equals("")) ||
+				(txtPass.getPassword().length == 0))
+				{
+					JOptionPane.showMessageDialog(null,"Preencha todos os campos");	
+					liberado = false;
+				}	
+					
+				
+				if(liberado) {
+					try {
+						String senha = new String(txtPass.getPassword());
+						String senhaCripto = Criptografia.Cripto(senha);
+						
+						String telefone = "(" + txtDDD.getText() + ")" + txtTel.getText();
+						Nutricionista nutri = new Nutricionista(Integer.parseInt(txtCod.getText().trim()),
+																				txtNome.getText(),
+																				txtCpf.getText(),
+																				txtEmail.getText().trim(),
+																				telefone,
+																				senhaCripto);
+						Nutricionistas.incluir(nutri);
+					}
+					catch(Exception ex) {
+						if(ex.getMessage().equals("Nutricionista já cadastrado")) {
+							txtCod.setText("");
+							JOptionPane.showMessageDialog(null,"Código já está sendo utilizado\nTente outro");												
+						}						
+					}						
+				}		
 			}
 		});
-		btnCadastrar.setBounds(186, 286, 89, 23);
+		btnCadastrar.setBounds(186, 286, 119, 23);
 		contentPane.add(btnCadastrar);
 	}
 }
