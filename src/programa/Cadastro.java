@@ -168,6 +168,9 @@ public class Cadastro extends JFrame {
 																				telefone,
 																				senhaCripto);
 						Nutricionistas.incluir(nutri);
+						JOptionPane.showMessageDialog(null,"Cadastrado com sucesso!");
+						
+						txtCod.setText(""); txtNome.setText(""); txtCpf.setText(""); txtEmail.setText(""); txtTel.setText(""); txtPass.setText("");
 					}
 					catch(Exception ex) {
 						if(ex.getMessage().equals("Nutricionista já cadastrado")) {

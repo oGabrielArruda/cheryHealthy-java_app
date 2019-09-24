@@ -6,17 +6,24 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.JTextField;
+
+import bd.daos.Nutricionistas;
+import bd.dbos.Nutricionista;
+import cripto.Criptografia;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class janela1 {
 
 	private JFrame frame;
 	private JTextField txtId;
-	private JTextField txtSenha;
+	private JPasswordField txtSenha;
 
 	/**
 	 * Launch the application.
@@ -65,14 +72,39 @@ public class janela1 {
 		frame.getContentPane().add(txtId);
 		txtId.setColumns(10);
 		
-		txtSenha = new JTextField();
-		txtSenha.setColumns(10);
-		txtSenha.setBounds(262, 171, 152, 20);
-		frame.getContentPane().add(txtSenha);
-		
 		JButton btnLogar = new JButton("Entrar");
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				String cod = txtId.getText();
+				String senha = new String(txtSenha.getPassword());
+				
+				if(cod.trim().equals("") || senha.trim().equals(""))
+					JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
+				else {					
+					try {
+						int codigo = Integer.parseInt(cod);
+						if(Nutricionistas.cadastrado(codigo)) {
+							Nutricionista nutri = Nutricionistas.getNutricionista(codigo);
+							
+							
+							if(Criptografia.Cripto(senha).equals(nutri.getSenha())) {
+								Logado1 jan = new Logado1();
+								jan.setVisible(true);
+							}
+							else {
+								JOptionPane.showMessageDialog(null,"Senha incorreta!");
+								txtSenha.setText("");
+							}
+						}
+						else {
+							JOptionPane.showMessageDialog(null,"Código incorreto!");
+							txtId.setText("");
+						}																																
+					}
+					catch(Exception ex) {
+						
+					}		
+				}
 			}
 		});
 		btnLogar.setBounds(298, 211, 89, 23);
@@ -91,5 +123,9 @@ public class janela1 {
 		});
 		btnGoCadastro.setBounds(330, 328, 101, 23);
 		frame.getContentPane().add(btnGoCadastro);
+		
+		txtSenha = new JPasswordField();
+		txtSenha.setBounds(262, 171, 152, 20);
+		frame.getContentPane().add(txtSenha);
 	}
 }
