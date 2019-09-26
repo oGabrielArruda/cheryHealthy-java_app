@@ -39,6 +39,7 @@ public class Cadastro extends JFrame {
 				try {
 					Cadastro frame = new Cadastro();
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -121,7 +122,7 @@ public class Cadastro extends JFrame {
 		lblDdd.setBounds(186, 213, 46, 14);
 		contentPane.add(lblDdd);
 		
-		JLabel lblEx = new JLabel("Ex: 34527689");
+		JLabel lblEx = new JLabel("Ex: 3452-7689");
 		lblEx.setBounds(227, 213, 78, 14);
 		contentPane.add(lblEx);
 		

@@ -20,6 +20,7 @@ public class Logado1 extends JFrame {
 				try {
 					Logado1 frame = new Logado1();
 					frame.setVisible(true);
+					frame.setResizable(false);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
