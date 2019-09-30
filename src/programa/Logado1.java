@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 public class Logado1 extends JFrame {
 
 	private JPanel contentPane;
+	private int codNutricionista;
 
 	/**
 	 * Launch the application.
@@ -31,6 +32,14 @@ public class Logado1 extends JFrame {
 				}
 			}
 		});
+	}
+	
+	
+	public void setCodNutriLogado(int codNutricionista) {
+		this.codNutricionista = codNutricionista;
+	}
+	public int getCodNutriLogado() {
+		return this.codNutricionista;
 	}
 
 	/**
@@ -56,8 +65,9 @@ public class Logado1 extends JFrame {
 		JButton btnNewButton_1 = new JButton("Enviar Dietas");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				DietaJanela janela = new DietaJanela();
-				janela.setVisible(true);
+				DietaJanela jan = new DietaJanela();
+				jan.setVisible(true);
+				/*jan.setCodNutriLogado();*/
 			}
 		});
 		btnNewButton_1.setBounds(335, 232, 107, 29);
@@ -67,4 +77,5 @@ public class Logado1 extends JFrame {
 		btnNewButton_2.setBounds(480, 232, 107, 29);
 		contentPane.add(btnNewButton_2);
 	}
+	
 }

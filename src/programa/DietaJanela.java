@@ -18,6 +18,7 @@ public class DietaJanela extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtCodUsuario;
+	private int codNutricionista;
 
 	/**
 	 * Launch the application.
@@ -112,5 +113,9 @@ public class DietaJanela extends JFrame {
 		JButton btnEnviar = new JButton("Enviar");
 		btnEnviar.setBounds(194, 433, 89, 23);
 		contentPane.add(btnEnviar);
+	}
+	
+	public void setCodNutriLogado(int codNutricionista) {
+		this.codNutricionista = codNutricionista;
 	}
 }

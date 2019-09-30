@@ -76,14 +76,14 @@ public class janela1 {
 		JButton btnLogar = new JButton("Entrar");
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				String cod = txtId.getText();
+				String codStr = txtId.getText();
 				String senha = new String(txtSenha.getPassword());
 				
-				if(cod.trim().equals("") || senha.trim().equals(""))
+				if(codStr.trim().equals("") || senha.trim().equals(""))
 					JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
 				else {					
 					try {
-						int codigo = Integer.parseInt(cod);
+						int codigo = Integer.parseInt(codStr);
 						if(Nutricionistas.cadastrado(codigo)) {
 							Nutricionista nutri = Nutricionistas.getNutricionista(codigo);
 							
@@ -91,6 +91,7 @@ public class janela1 {
 							if(Criptografia.Cripto(senha).equals(nutri.getSenha())) {
 								Logado1 jan = new Logado1();
 								jan.setVisible(true);
+								jan.setCodNutriLogado(codigo);
 							}
 							else {
 								JOptionPane.showMessageDialog(null,"Senha incorreta!");
