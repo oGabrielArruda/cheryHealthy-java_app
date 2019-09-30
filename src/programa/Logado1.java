@@ -6,6 +6,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Logado1 extends JFrame {
 
@@ -36,8 +41,30 @@ public class Logado1 extends JFrame {
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Bem vindo(a)!");
+		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 36));
+		lblNewLabel.setBounds(308, 161, 231, 42);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Ver Usu\u00E1rios");
+		btnNewButton.setBounds(193, 232, 107, 29);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Enviar Dietas");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				DietaJanela janela = new DietaJanela();
+				janela.setVisible(true);
+			}
+		});
+		btnNewButton_1.setBounds(335, 232, 107, 29);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Editar Perfil");
+		btnNewButton_2.setBounds(480, 232, 107, 29);
+		contentPane.add(btnNewButton_2);
 	}
-
 }
