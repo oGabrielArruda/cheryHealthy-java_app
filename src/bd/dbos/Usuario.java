@@ -1,5 +1,134 @@
 package bd.dbos;
 
 public class Usuario {
+	private int codUsuario, altura, codNutricionista, pontuacao;
+	private double peso;
+	private String nome,cpf,email,telefone, senha;
 	
+	public Usuario(int codUsuario, String nome, String cpf, String email, String telefone, 
+			String senha, double peso, int altura, int codNutricionista, int pontuacao) throws Exception 
+	{
+		this.setCodUsuario(codUsuario);
+		this.setNome(nome);
+		this.setCpf(cpf);
+		this.setEmail(email);
+		this.setTelefone(telefone);
+		this.setSenha(senha);
+	}
+	
+	public void setCodUsuario(int cod) throws Exception
+	{
+		if(cod < 0)
+			throw new Exception("Código inválido");
+		this.codUsuario = cod;
+	}
+	
+	public void setNome(String nome) throws Exception
+	{
+		if(nome.isEmpty() || nome.trim().equals(""))
+			throw new Exception("Nome inváilido");
+		this.nome = nome;
+	}
+	
+	public void setCpf(String cpf) throws Exception
+	{
+		if(cpf.isEmpty() || cpf.trim().equals(""))
+			throw new Exception("Nome inváilido");
+		this.cpf = cpf;
+	}
+	
+	public void setEmail(String email) throws Exception
+	{
+		if(email.isEmpty() || email.trim().equals(""))
+			throw new Exception("Nome inváilido");
+		this.email = email;
+	}
+	
+	public void setTelefone(String telefone) throws Exception
+	{
+		if(telefone.isEmpty() || telefone.trim().equals(""))
+			throw new Exception("Nome inváilido");
+		this.telefone = telefone;
+	}
+	
+	public void setSenha(String senha) throws Exception
+	{
+		if(senha.isEmpty() || senha.trim().equals(""))
+			throw new Exception("Nome inváilido");
+		this.senha = senha;
+	}
+	
+	public void setCodNutricionista(int cod) throws Exception
+	{
+		if(cod < 0)
+			throw new Exception("Código inválido");
+		this.codNutricionista = cod;
+	}
+	public void setPeso(double peso) throws Exception
+	{
+		if(peso < 0)
+			throw new Exception("Código inválido");
+		this.peso = peso;
+	}
+	public void setAltura(int altura) throws Exception
+	{
+		if(altura < 0)
+			throw new Exception("Código inválido");
+		this.altura = altura;
+	}
+	public void setPontuacao(int pontuacao) throws Exception
+	{
+		if(pontuacao < 0)
+			throw new Exception("Código inválido");
+	}
+	
+	public int getCodUsuario() 
+	{
+		return this.codUsuario;
+	}
+	
+	public String getNome() 
+	{
+		return this.nome;
+	}
+	
+	public String getCpf() 
+	{
+		return this.cpf;
+	}
+	
+	public String getEmail() 
+	{
+		return this.email;
+	}
+	
+	public String getTelefone() 
+	{
+		return this.telefone;
+	}
+	
+	public String getSenha() 
+	{
+		return this.senha;
+	}
+	
+	public int getCodNutricionista() 
+	{
+		return this.codNutricionista;
+	}
+	
+	public double getPeso() 
+	{
+		return this.peso;
+	}
+	
+	public int getAltura() 
+	{
+		return this.altura;
+	}
+	
+	public int getPontuacao() 
+	{
+		return this.pontuacao;
+	}
 }

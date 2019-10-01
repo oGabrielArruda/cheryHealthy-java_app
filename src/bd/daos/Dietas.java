@@ -26,7 +26,7 @@ public class Dietas {
 		return retorno;
 	}
 	
-	public static void inserir(String codUsuario, String dieta, String dia) throws Exception
+	public static void inserir(int codUsuario, String dieta, String dia) throws Exception
 	{
 		if(dieta.length() > 500)
 			throw new Exception("Digite uma dieta com menos de 500 caracteres");
@@ -39,7 +39,7 @@ public class Dietas {
 					+ "where codUsuario = ?"; 
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			BDSQLServer.COMANDO.setString(1, dieta);
-			BDSQLServer.COMANDO.setString(2, codUsuario);
+			BDSQLServer.COMANDO.setInt(2, codUsuario);
 
 			
 			BDSQLServer.COMANDO.executeUpdate();

@@ -67,7 +67,7 @@ public class Logado1 extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				DietaJanela jan = new DietaJanela();
 				jan.setVisible(true);
-				/*jan.setCodNutriLogado();*/
+				jan.setCodNutriLogado(codNutricionista);
 			}
 		});
 		btnNewButton_1.setBounds(335, 232, 107, 29);
