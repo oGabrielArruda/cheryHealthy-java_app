@@ -8,11 +8,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DietaJanela extends JFrame {
 
@@ -111,11 +115,37 @@ public class DietaJanela extends JFrame {
 		contentPane.add(lblSelecioneODia);
 		
 		JButton btnEnviar = new JButton("Enviar");
+		btnEnviar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!(codigoValido(txtCodUsuario.getText()))) 
+				{
+					
+				}
+				else 
+				{
+					
+				}			
+			}
+		});
 		btnEnviar.setBounds(194, 433, 89, 23);
 		contentPane.add(btnEnviar);
 	}
 	
 	public void setCodNutriLogado(int codNutricionista) {
 		this.codNutricionista = codNutricionista;
+	}
+	
+	private boolean codigoValido(String codigo) {
+		if(codigo.isEmpty() || codigo.trim().equals("")) 
+		{
+			JOptionPane.showMessageDialog(null,"Senha incorreta!");
+			return false;
+		}
+		
+		try 
+		{
+			
+		}
+			
 	}
 }
