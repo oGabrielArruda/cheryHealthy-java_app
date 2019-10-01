@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import bd.daos.*;
 import bd.dbos.*;
 
+
 public class DietaJanela extends JFrame {
 
 	private JPanel contentPane;
@@ -134,6 +135,7 @@ public class DietaJanela extends JFrame {
 					}
 					catch(Exception ex) {}
 				}		
+
 			}
 		});
 		btnEnviar.setBounds(194, 433, 89, 23);
@@ -169,5 +171,6 @@ public class DietaJanela extends JFrame {
 		catch(Exception ex) {}
 		
 		return true;			
+		}
 	}
-}
+
