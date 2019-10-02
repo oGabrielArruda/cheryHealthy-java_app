@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextPane;
@@ -29,6 +31,7 @@ import bd.dbos.*;
 public class DietaJanela extends JFrame {
 
 	private JPanel contentPane;
+	private ButtonGroup grupoDias;
 	private JTextField txtCodUsuario;
 	private int codNutricionista;
 
@@ -110,9 +113,9 @@ public class DietaJanela extends JFrame {
 		rdbtnSex.setBounds(280, 385, 52, 23);
 		contentPane.add(rdbtnSex);
 		
-		JRadioButton rdbtnSb = new JRadioButton("S\u00E1b");
-		rdbtnSb.setBounds(334, 385, 52, 23);
-		contentPane.add(rdbtnSb);
+		JRadioButton rdbtnSab = new JRadioButton("S\u00E1b");
+		rdbtnSab.setBounds(334, 385, 52, 23);
+		contentPane.add(rdbtnSab);
 		
 		JRadioButton rdbtnDom = new JRadioButton("Dom");
 		rdbtnDom.setBounds(388, 385, 52, 23);
@@ -130,14 +133,47 @@ public class DietaJanela extends JFrame {
 					try 
 					{
 						String dia = "";
-						int codUsuario = Integer.parseInt(txtCodUsuario.getText());
-						Dietas.inserir(codUsuario, txtDieta.getText(), dia);
+						if(rdbtnSeg.isSelected())
+							dia = "seg";
+						if(rdbtnTer.isSelected())
+							dia = "ter";
+						if(rdbtnQua.isSelected())
+							dia = "qua";
+						if(rdbtnQui.isSelected())
+							dia = "qui";
+						if(rdbtnSex.isSelected())
+							dia = "sex";
+						if(rdbtnSab.isSelected())
+							dia = "sab";
+						if(rdbtnDom.isSelected())
+							dia = "dom";
+						if(!(dia.equals(""))) 
+						{
+							int codUsuario = Integer.parseInt(txtCodUsuario.getText());
+							Dietas.inserir(codUsuario, txtDieta.getText(), dia);
+						}
+						else 
+						{
+							JOptionPane.showMessageDialog(null,"Selecione o dia para implementar a dieta!");
+						}
+						
 					}
 					catch(Exception ex) {}
 				}		
 
 			}
 		});
+		
+		
+		grupoDias = new ButtonGroup();
+		grupoDias.add(rdbtnSeg);
+		grupoDias.add(rdbtnTer);
+		grupoDias.add(rdbtnQua);
+		grupoDias.add(rdbtnQui);
+		grupoDias.add(rdbtnSex);
+		grupoDias.add(rdbtnSab);
+		grupoDias.add(rdbtnDom);
+		
 		btnEnviar.setBounds(194, 433, 89, 23);
 		contentPane.add(btnEnviar);
 	}
