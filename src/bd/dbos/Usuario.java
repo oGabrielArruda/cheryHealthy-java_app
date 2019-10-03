@@ -14,6 +14,10 @@ public class Usuario {
 		this.setEmail(email);
 		this.setTelefone(telefone);
 		this.setSenha(senha);
+		this.setPeso(peso);
+		this.setAltura(altura);
+		this.setCodNutricionista(codNutricionista);
+		this.setPontuacao(pontuacao);
 	}
 	
 	public void setCodUsuario(int cod) throws Exception

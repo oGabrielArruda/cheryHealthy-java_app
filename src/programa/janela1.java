@@ -90,8 +90,8 @@ public class janela1 {
 							
 							if(Criptografia.Cripto(senha).equals(nutri.getSenha())) {
 								Logado1 jan = new Logado1();
-								jan.setVisible(true);
 								jan.setCodNutriLogado(codigo);
+								jan.setVisible(true);
 							}
 							else {
 								JOptionPane.showMessageDialog(null,"Senha incorreta!");

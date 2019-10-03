@@ -135,17 +135,17 @@ public class DietaJanela extends JFrame {
 						String dia = "";
 						if(rdbtnSeg.isSelected())
 							dia = "seg";
-						if(rdbtnTer.isSelected())
+						else if(rdbtnTer.isSelected())
 							dia = "ter";
-						if(rdbtnQua.isSelected())
+						else if(rdbtnQua.isSelected())
 							dia = "qua";
-						if(rdbtnQui.isSelected())
+						else if(rdbtnQui.isSelected())
 							dia = "qui";
-						if(rdbtnSex.isSelected())
+						else if(rdbtnSex.isSelected())
 							dia = "sex";
-						if(rdbtnSab.isSelected())
+						else if(rdbtnSab.isSelected())
 							dia = "sab";
-						if(rdbtnDom.isSelected())
+						else if(rdbtnDom.isSelected())
 							dia = "dom";
 						if(!(dia.equals(""))) 
 						{
