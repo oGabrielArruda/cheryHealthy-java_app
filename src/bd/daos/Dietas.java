@@ -28,13 +28,13 @@ public class Dietas {
 	
 	public static void inserir(int codUsuario, String dieta, String dia) throws Exception
 	{
-		if(dieta.length() > 500)
-			throw new Exception("Digite uma dieta com menos de 500 caracteres");
+		if(dieta.length() > 300)
+			throw new Exception("Digite uma dieta com menos de 300 caracteres");
 		
 		try 
 		{
 			String sql;
-			sql = "UPDATE Nutricionista "
+			sql = "UPDATE dieta "
 					+ "SET "+ dia +" = ?"
 					+ "where codUsuario = ?"; 
 			BDSQLServer.COMANDO.prepareStatement(sql);

@@ -90,7 +90,7 @@ public class Usuarios {
 		}
 		catch(Exception ex) 
 		{
-			throw new Exception("Erro ao procurar nutricionista");
+			throw new Exception("Erro ao procurar usuário");
 		}
 		return user;
 	}

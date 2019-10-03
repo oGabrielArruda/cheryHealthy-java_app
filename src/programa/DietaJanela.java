@@ -151,6 +151,7 @@ public class DietaJanela extends JFrame {
 						{
 							int codUsuario = Integer.parseInt(txtCodUsuario.getText());
 							Dietas.inserir(codUsuario, txtDieta.getText(), dia);
+							JOptionPane.showMessageDialog(null,"Dieta inserida com sucesso!");
 						}
 						else 
 						{
@@ -158,7 +159,10 @@ public class DietaJanela extends JFrame {
 						}
 						
 					}
-					catch(Exception ex) {}
+					catch(Exception ex) 
+					{
+						JOptionPane.showMessageDialog(null,ex.getMessage());
+					}
 				}		
 
 			}
@@ -204,7 +208,10 @@ public class DietaJanela extends JFrame {
 				return false;
 			}
 		}
-		catch(Exception ex) {}
+		catch(Exception ex) 
+		{
+			JOptionPane.showMessageDialog(null,ex.getMessage());
+		}
 		
 		return true;			
 		}
