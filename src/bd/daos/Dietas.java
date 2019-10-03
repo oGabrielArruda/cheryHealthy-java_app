@@ -34,9 +34,7 @@ public class Dietas {
 		try 
 		{
 			String sql;
-			sql = "UPDATE dieta "
-					+ "SET "+ dia +" = ?"
-					+ "where codUsuario = ?"; 
+			sql = "update dieta set "+ dia + " = ? where codUsuario = ?";
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			BDSQLServer.COMANDO.setString(1, dieta);
 			BDSQLServer.COMANDO.setInt(2, codUsuario);

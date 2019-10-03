@@ -51,9 +51,9 @@ public class Usuarios {
 			BDSQLServer.COMANDO.setString(4, user.getTelefone());
 			BDSQLServer.COMANDO.setString(5, user.getSenha());
 			BDSQLServer.COMANDO.setDouble(6, user.getPeso());
-			BDSQLServer.COMANDO.setInt(7, user.getAltura());
-			BDSQLServer.COMANDO.setInt(7, user.getPontuacao());
-			BDSQLServer.COMANDO.setInt(7, user.getCodNutricionista());
+			BDSQLServer.COMANDO.setDouble(7, user.getAltura());
+			BDSQLServer.COMANDO.setInt(8, user.getPontuacao());
+			BDSQLServer.COMANDO.setInt(9, user.getCodNutricionista());
 			
 			
 			BDSQLServer.COMANDO.executeUpdate();
@@ -83,10 +83,10 @@ public class Usuarios {
 					resultado.getString("Email"),
 					resultado.getString("telefone"),
 					resultado.getString("senha"),
-					resultado.getDouble("peso"),
-					resultado.getInt("altura"),
+					resultado.getFloat("peso"),
+					resultado.getFloat("altura"),
 					resultado.getInt("codNutricionista"),
-					resultado.getInt("pontuacao"));
+					resultado.getInt("pontuação"));
 		}
 		catch(Exception ex) 
 		{

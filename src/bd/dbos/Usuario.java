@@ -1,12 +1,12 @@
 package bd.dbos;
 
 public class Usuario {
-	private int codUsuario, altura, codNutricionista, pontuacao;
-	private double peso;
+	private int codUsuario, codNutricionista, pontuacao;
+	private float altura, peso;
 	private String nome,cpf,email,telefone, senha;
 	
 	public Usuario(int codUsuario, String nome, String cpf, String email, String telefone, 
-			String senha, double peso, int altura, int codNutricionista, int pontuacao) throws Exception 
+			String senha, float peso, float altura, int codNutricionista, int pontuacao) throws Exception 
 	{
 		this.setCodUsuario(codUsuario);
 		this.setNome(nome);
@@ -64,13 +64,13 @@ public class Usuario {
 			throw new Exception("Código inválido");
 		this.codNutricionista = cod;
 	}
-	public void setPeso(double peso) throws Exception
+	public void setPeso(float peso) throws Exception
 	{
 		if(peso < 0)
 			throw new Exception("Código inválido");
 		this.peso = peso;
 	}
-	public void setAltura(int altura) throws Exception
+	public void setAltura(float altura) throws Exception
 	{
 		if(altura < 0)
 			throw new Exception("Código inválido");
@@ -117,12 +117,12 @@ public class Usuario {
 		return this.codNutricionista;
 	}
 	
-	public double getPeso() 
+	public float getPeso() 
 	{
 		return this.peso;
 	}
 	
-	public int getAltura() 
+	public float getAltura() 
 	{
 		return this.altura;
 	}

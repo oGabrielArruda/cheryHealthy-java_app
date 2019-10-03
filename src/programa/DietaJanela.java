@@ -202,7 +202,10 @@ public class DietaJanela extends JFrame {
 				JOptionPane.showMessageDialog(null,"Código de usuário não cadastrado!");
 				return false;
 			}
-			if(!(Usuarios.getUsuario(codigoInt).getCodNutricionista() == this.codNutricionista)) 
+			
+			Usuario selecionado = Usuarios.getUsuario(codigoInt);
+			
+			if(selecionado.getCodNutricionista() != this.codNutricionista) 
 			{
 				JOptionPane.showMessageDialog(null,"Este usuário pertence à outro nutricionista!");
 				return false;
