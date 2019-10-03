@@ -51,7 +51,7 @@ public class Cadastro extends JFrame {
 	 * Create the frame.
 	 */
 	public Cadastro() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 545, 384);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -119,11 +119,11 @@ public class Cadastro extends JFrame {
 		txtDDD.setColumns(10);
 		
 		JLabel lblDdd = new JLabel("DDD");
-		lblDdd.setBounds(186, 213, 46, 14);
+		lblDdd.setBounds(186, 213, 69, 14);
 		contentPane.add(lblDdd);
 		
 		JLabel lblEx = new JLabel("Ex: 3452-7689");
-		lblEx.setBounds(227, 213, 78, 14);
+		lblEx.setBounds(227, 213, 201, 14);
 		contentPane.add(lblEx);
 		
 		JLabel lblEx_1 = new JLabel("Ex: 023.567.123-92");
@@ -170,6 +170,7 @@ public class Cadastro extends JFrame {
 																				senhaCripto);
 						Nutricionistas.incluir(nutri);
 						JOptionPane.showMessageDialog(null,"Cadastrado com sucesso!");
+						Cadastro.this.dispose();
 						
 						txtCod.setText(""); txtNome.setText(""); txtCpf.setText(""); txtEmail.setText(""); txtTel.setText(""); txtPass.setText("");
 					}
@@ -178,6 +179,8 @@ public class Cadastro extends JFrame {
 							txtCod.setText("");
 							JOptionPane.showMessageDialog(null,"Código já está sendo utilizado\nTente outro");												
 						}						
+						else
+							JOptionPane.showMessageDialog(null,"Verifique os valores colocados");		
 					}						
 				}		
 			}

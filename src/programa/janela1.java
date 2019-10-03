@@ -113,7 +113,7 @@ public class janela1 {
 		frame.getContentPane().add(btnLogar);
 		
 		JLabel lblCadastro = new JLabel("N\u00E3o tem uma conta? ");
-		lblCadastro.setBounds(219, 332, 101, 14);
+		lblCadastro.setBounds(198, 332, 247, 14);
 		frame.getContentPane().add(lblCadastro);
 		
 		JButton btnGoCadastro = new JButton("Cadastrar-se");
@@ -123,7 +123,7 @@ public class janela1 {
 				janelaCad.setVisible(true);
 			}
 		});
-		btnGoCadastro.setBounds(330, 328, 101, 23);
+		btnGoCadastro.setBounds(344, 328, 120, 23);
 		frame.getContentPane().add(btnGoCadastro);
 		
 		txtSenha = new JPasswordField();

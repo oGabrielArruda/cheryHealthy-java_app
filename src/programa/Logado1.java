@@ -59,6 +59,11 @@ public class Logado1 extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Ver Usu\u00E1rios");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnNewButton.setBounds(193, 232, 107, 29);
 		contentPane.add(btnNewButton);
 		
