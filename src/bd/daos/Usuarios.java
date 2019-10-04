@@ -98,16 +98,20 @@ public class Usuarios {
 		return user;
 	}
 	
-	public static List<Usuario> selecionarUsuarios() 
+	public static List<Usuario> selecionarUsuarios(int codNutri) 
 	{
 		List<Usuario> ret = new ArrayList<Usuario>();
 		Usuario user;
 		
 		try 
 		{
-			String sql = "select * from Usuario order by nome";
+			String sql = "select * from Usuario where codNutricionista = ? order by nome";
+			
 			BDSQLServer.COMANDO.prepareStatement(sql);
+			BDSQLServer.COMANDO.setInt(1, codNutri);
+			
 			MeuResultSet resultado = (MeuResultSet) BDSQLServer.COMANDO.executeQuery();
+			
 			while(resultado.next()) 
 			{
 				user = new Usuario(resultado.getInt("codUsuario"),

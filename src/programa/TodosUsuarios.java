@@ -72,8 +72,6 @@ public class TodosUsuarios extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(table);
 		
-		inserirValores(table);
-		
 		JLabel lblTodosOsSeus = new JLabel("Todos os seus usu\u00E1rios");
 		lblTodosOsSeus.setFont(new Font("Tahoma", Font.PLAIN, 27));
 		contentPane.add(lblTodosOsSeus, BorderLayout.NORTH);
@@ -85,11 +83,12 @@ public class TodosUsuarios extends JFrame {
 		this.codNutricionista = codigo;
 	}
 	
-	private void inserirValores(JTable table) 
+	public void inserirValores() 
 	{
 		DefaultTableModel modelo = (DefaultTableModel) table.getModel(); // pega o modelo da tabela para inserir linhas
 		
-		List<Usuario> list = Usuarios.selecionarUsuarios(); // lista com todos usuarios
+		List<Usuario> list = Usuarios.selecionarUsuarios(this.codNutricionista); // lista com todos usuarios do nutricionista
+		System.out.print(this.codNutricionista+" <<");
 		
 		for(int i = 0; i < list.size(); i++) 
 		{
