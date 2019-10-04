@@ -61,7 +61,10 @@ public class Logado1 extends JFrame {
 		JButton btnNewButton = new JButton("Ver Usu\u00E1rios");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				System.out.println("entro");
+				TodosUsuarios tdsUsers = new TodosUsuarios();
+				tdsUsers.setVisible(true);
+				tdsUsers.setCodNutricionista(codNutricionista);
 			}
 		});
 		btnNewButton.setBounds(193, 232, 107, 29);

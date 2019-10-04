@@ -20,6 +20,7 @@ public class Usuario {
 		this.setPontuacao(pontuacao);
 	}
 	
+	
 	public void setCodUsuario(int cod) throws Exception
 	{
 		if(cod < 0)

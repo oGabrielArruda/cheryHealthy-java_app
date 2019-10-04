@@ -1,6 +1,9 @@
 package bd.daos;
 
 import java.sql.*;
+import java.util.List;
+import java.util.ArrayList;
+
 import bd.*;
 import bd.core.*;
 import bd.dbos.*;
@@ -93,5 +96,38 @@ public class Usuarios {
 			throw new Exception("Erro ao procurar usuário");
 		}
 		return user;
+	}
+	
+	public static List<Usuario> selecionarUsuarios() 
+	{
+		List<Usuario> ret = new ArrayList<Usuario>();
+		Usuario user;
+		
+		try 
+		{
+			String sql = "select * from Usuario order by nome";
+			BDSQLServer.COMANDO.prepareStatement(sql);
+			MeuResultSet resultado = (MeuResultSet) BDSQLServer.COMANDO.executeQuery();
+			while(resultado.next()) 
+			{
+				user = new Usuario(resultado.getInt("codUsuario"),
+								   resultado.getString("nome"),
+								   resultado.getString("cpf"),
+								   resultado.getString("email"),
+								   resultado.getString("telefone"),
+								   resultado.getString("senha"),
+								   resultado.getFloat("peso"),
+								   resultado.getFloat("altura"),
+								   resultado.getInt("codNutricionista"),
+								   resultado.getInt("pontuação"));
+				ret.add(user);
+			}
+		}
+		catch(Exception ex)
+		{
+			
+		}
+		
+		return ret;
 	}
 }
