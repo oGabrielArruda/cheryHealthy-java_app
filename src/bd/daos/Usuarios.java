@@ -98,7 +98,7 @@ public class Usuarios {
 		return user;
 	}
 	
-	public static List<Usuario> selecionarUsuarios(int codNutri) 
+	public static List<Usuario> selecionarUsuarios(int codNutri) throws Exception
 	{
 		List<Usuario> ret = new ArrayList<Usuario>();
 		Usuario user;
@@ -129,7 +129,7 @@ public class Usuarios {
 		}
 		catch(Exception ex)
 		{
-			
+			throw new Exception("Erro ao procurar usuários");
 		}
 		
 		return ret;

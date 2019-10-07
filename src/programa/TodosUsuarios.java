@@ -9,6 +9,7 @@ import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -69,8 +70,13 @@ public class TodosUsuarios extends JFrame {
 		table.getColumnModel().getColumn(3).setPreferredWidth(97);
 		table.getColumnModel().getColumn(4).setPreferredWidth(66);
 		table.getColumnModel().getColumn(5).setPreferredWidth(59);
+		
 		contentPane.setLayout(new BorderLayout(0, 0));
 		contentPane.add(table);
+		
+		JScrollPane scroll = new JScrollPane(table);
+		contentPane.add(scroll);
+		
 		
 		JLabel lblTodosOsSeus = new JLabel("Todos os seus usu\u00E1rios");
 		lblTodosOsSeus.setFont(new Font("Tahoma", Font.PLAIN, 27));
@@ -85,24 +91,31 @@ public class TodosUsuarios extends JFrame {
 	
 	public void inserirValores() 
 	{
-		DefaultTableModel modelo = (DefaultTableModel) table.getModel(); // pega o modelo da tabela para inserir linhas
-		
-		List<Usuario> list = Usuarios.selecionarUsuarios(this.codNutricionista); // lista com todos usuarios do nutricionista
-		System.out.print(this.codNutricionista+" <<");
-		
-		for(int i = 0; i < list.size(); i++) 
+		try 
 		{
-			Usuario user = list.get(i);
+			DefaultTableModel modelo = (DefaultTableModel) table.getModel(); // pega o modelo da tabela para inserir linhas
 			
-			Object[] linha = {user.getCodUsuario(), // linha que será adicionada na tabela
-					user.getNome(),
-					user.getEmail(), 
-					user.getTelefone(),
-					user.getPeso(), 
-					user.getAltura(), 
-					user.getPontuacao()};
+			List<Usuario> list = Usuarios.selecionarUsuarios(this.codNutricionista); // lista com todos usuarios do nutricionista
 			
-			modelo.addRow(linha);
+			
+			for(int i = 0; i < list.size(); i++) 
+			{
+				Usuario user = list.get(i);
+				
+				Object[] linha = {user.getCodUsuario(), // linha que será adicionada na tabela
+						user.getNome(),
+						user.getEmail(), 
+						user.getTelefone(),
+						user.getPeso(), 
+						user.getAltura(), 
+						user.getPontuacao()};
+				
+				modelo.addRow(linha);
+			}
+		}
+		catch(Exception ex) 
+		{
+			JOptionPane.showMessageDialog(null,"Erro ao procurar usuários");
 		}
 	}
 }

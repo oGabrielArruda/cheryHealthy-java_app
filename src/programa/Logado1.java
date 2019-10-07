@@ -67,7 +67,7 @@ public class Logado1 extends JFrame {
 				tdsUsers.inserirValores();
 			}
 		});
-		btnNewButton.setBounds(193, 232, 107, 29);
+		btnNewButton.setBounds(150, 232, 136, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Enviar Dietas");
@@ -78,11 +78,11 @@ public class Logado1 extends JFrame {
 				jan.setCodNutriLogado(codNutricionista);
 			}
 		});
-		btnNewButton_1.setBounds(335, 232, 107, 29);
+		btnNewButton_1.setBounds(329, 232, 145, 29);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Editar Perfil");
-		btnNewButton_2.setBounds(480, 232, 107, 29);
+		btnNewButton_2.setBounds(512, 232, 146, 29);
 		contentPane.add(btnNewButton_2);
 	}
 	
