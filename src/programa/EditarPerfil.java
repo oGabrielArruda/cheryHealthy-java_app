@@ -32,7 +32,6 @@ public class EditarPerfil extends JFrame {
 	private JPasswordField txtSenha;
 	private int codNutricionista;
 	private Nutricionista nutri;
-	
 	/**
 	 * Launch the application.
 	 */
@@ -156,10 +155,9 @@ public class EditarPerfil extends JFrame {
 				{
 					String telefone = "("+ddd+")"+tel;
 					
-					String senhaCripto = Criptografia.Cripto(senha);
 					try 
 					{
-						Nutricionista nutri = new Nutricionista(codNutricionista, nome, cpf, email, telefone, senhaCripto);
+						Nutricionista nutri = new Nutricionista(codNutricionista, nome, cpf, email, telefone, senha);
 						Nutricionistas.alterar(nutri);
 						JOptionPane.showMessageDialog(null,"Alteração realizada com sucesso!");
 					}
@@ -202,6 +200,7 @@ public class EditarPerfil extends JFrame {
 			String num = tel.substring(4, 13);
 			txtDDD.setText(ddd);
 			txtTel.setText(num);
+			
 		}
 		catch(Exception ex) 
 		{
