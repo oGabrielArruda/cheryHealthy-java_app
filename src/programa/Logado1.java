@@ -82,6 +82,14 @@ public class Logado1 extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Editar Perfil");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EditarPerfil editJan = new EditarPerfil();
+				editJan.setVisible(true);
+				editJan.setCodNutricionista(codNutricionista);
+				editJan.exibirDados();
+			}
+		});
 		btnNewButton_2.setBounds(512, 232, 146, 29);
 		contentPane.add(btnNewButton_2);
 	}
