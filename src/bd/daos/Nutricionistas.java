@@ -61,13 +61,8 @@ public class Nutricionistas {
 		try 
 		{
 			String sql;
-			sql = "UPDATE Nutricionista "
-					+ "SET Nome = ?"
-					+ "SET Cpf = ?"
-					+ "SET Email = ?"
-					+ "SET Telefone = ?"
-					+ "SET Senha = ?"
-					+ "where codNutricionista = ?"; 
+			sql = "update Nutricionista set nome= ?, cpf = ?, email = ?, telefone = ?, senha = ? where codNutricionista = ?";
+
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			BDSQLServer.COMANDO.setString(1, nutri.getNome());
 			BDSQLServer.COMANDO.setString(2, nutri.getCpf());

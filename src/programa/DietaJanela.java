@@ -82,6 +82,14 @@ public class DietaJanela extends JFrame {
 		contentPane.add(lblCasoNoSaiba);
 		
 		JButton btnVerCdigos = new JButton("Ver c\u00F3digos");
+		btnVerCdigos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TodosUsuarios tdsUsers = new TodosUsuarios();
+				tdsUsers.setVisible(true);
+				tdsUsers.setCodNutricionista(codNutricionista);
+				tdsUsers.inserirValores();
+			}
+		});
 		btnVerCdigos.setBounds(315, 88, 122, 23);
 		contentPane.add(btnVerCdigos);
 		

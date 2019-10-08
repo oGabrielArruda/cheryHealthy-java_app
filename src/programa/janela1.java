@@ -92,6 +92,7 @@ public class janela1 {
 								Logado1 jan = new Logado1();
 								jan.setCodNutriLogado(codigo);
 								jan.setVisible(true);
+								janela1.this.frame.dispose();
 							}
 							else {
 								JOptionPane.showMessageDialog(null,"Senha incorreta!");

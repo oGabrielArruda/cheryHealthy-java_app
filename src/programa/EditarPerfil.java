@@ -62,7 +62,7 @@ public class EditarPerfil extends JFrame {
 		
 		JLabel lblEditarPerfil = new JLabel("Editar Perfil");
 		lblEditarPerfil.setFont(new Font("Times New Roman", Font.PLAIN, 26));
-		lblEditarPerfil.setBounds(154, 80, 364, 91);
+		lblEditarPerfil.setBounds(176, 79, 364, 91);
 		contentPane.add(lblEditarPerfil);
 		
 		JLabel lblCdigo = new JLabel("C\u00F3digo");
@@ -169,13 +169,25 @@ public class EditarPerfil extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		btnNewButton.setBounds(366, 387, 114, 23);
+		btnNewButton.setBounds(187, 392, 114, 23);
 		contentPane.add(btnNewButton);
 		
 		txtSenha = new JPasswordField();
+		txtSenha.setEditable(false);
 		txtSenha.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txtSenha.setBounds(266, 328, 214, 20);
+		txtSenha.setBounds(266, 327, 94, 20);
 		contentPane.add(txtSenha);
+		
+		JButton btnNewButton_1 = new JButton("Alterar Senha");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AlterarSenha jan = new AlterarSenha();
+				jan.setVisible(true);
+				jan.setCodNutricionista(codNutricionista);
+			}
+		});
+		btnNewButton_1.setBounds(370, 327, 148, 23);
+		contentPane.add(btnNewButton_1);
 	}
 	
 	
