@@ -79,37 +79,37 @@ public class janela1 {
 				String codStr = txtId.getText();
 				String senha = new String(txtSenha.getPassword());
 				
-				if(codStr.trim().equals("") || senha.trim().equals(""))
-					JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
-				else {					
-					try {
-						int codigo = Integer.parseInt(codStr);
-						if(Nutricionistas.cadastrado(codigo)) {
-							Nutricionista nutri = Nutricionistas.getNutricionista(codigo);
+				try 
+				{
+					if(codStr.trim().equals("") || senha.trim().equals(""))
+						throw new Exception("Preencha todos os campos!");					
+					
+					int codigo = Integer.parseInt(codStr);
+					
+					if(!Nutricionistas.cadastrado(codigo))
+						throw new Exception("Código incorreto!");
+					
+					Nutricionista nutri = Nutricionistas.getNutricionista(codigo);
 							
 							
-							if(Criptografia.Cripto(senha).equals(nutri.getSenha())) {
-								Logado1 jan = new Logado1();
-								jan.setCodNutriLogado(codigo);
-								jan.setVisible(true);
-								janela1.this.frame.dispose();
-							}
-							else {
-								JOptionPane.showMessageDialog(null,"Senha incorreta!");
-								txtSenha.setText("");
-							}
-						}
-						else {
-							JOptionPane.showMessageDialog(null,"Código incorreto!");
-							txtId.setText("");
-						}																																
-					}
-					catch(Exception ex) {
+					if(!(Criptografia.Cripto(senha).equals(nutri.getSenha())))
+						throw new Exception("Senha incorreta!");
 						
-					}		
+					Logado1 jan = new Logado1();
+					jan.setCodNutriLogado(codigo);
+					jan.setVisible(true);
+					janela1.this.frame.dispose();																														
+				}
+				catch(Exception ex) {
+					JOptionPane.showMessageDialog(null,ex.getMessage());
+				}
+				finally {
+					txtId.setText("");
+					txtSenha.setText("");
 				}
 			}
 		});
+		
 		btnLogar.setBounds(298, 211, 89, 23);
 		frame.getContentPane().add(btnLogar);
 		
