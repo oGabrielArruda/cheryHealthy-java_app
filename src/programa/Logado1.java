@@ -25,8 +25,8 @@ public class Logado1 extends JFrame {
 			public void run() {
 				try {
 					Logado1 frame = new Logado1();
-					frame.setVisible(true);
 					frame.setResizable(false);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

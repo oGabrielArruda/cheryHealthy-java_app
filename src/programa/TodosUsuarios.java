@@ -37,8 +37,8 @@ public class TodosUsuarios extends JFrame {
 			public void run() {
 				try {
 					TodosUsuarios frame = new TodosUsuarios();
-					frame.setVisible(true);
 					frame.setResizable(false);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

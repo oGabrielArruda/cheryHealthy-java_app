@@ -43,8 +43,8 @@ public class DietaJanela extends JFrame {
 			public void run() {
 				try {
 					DietaJanela frame = new DietaJanela();
-					frame.setVisible(true);
 					frame.setResizable(false);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

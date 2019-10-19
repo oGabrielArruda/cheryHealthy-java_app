@@ -40,8 +40,8 @@ public class EditarPerfil extends JFrame {
 			public void run() {
 				try {
 					EditarPerfil frame = new EditarPerfil();
-					frame.setVisible(true);
 					frame.setResizable(false);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

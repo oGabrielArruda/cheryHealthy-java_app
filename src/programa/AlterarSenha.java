@@ -34,8 +34,8 @@ public class AlterarSenha extends JFrame {
 			public void run() {
 				try {
 					AlterarSenha frame = new AlterarSenha();
-					frame.setVisible(true);
 					frame.setResizable(false);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

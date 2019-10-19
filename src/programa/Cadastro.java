@@ -38,8 +38,8 @@ public class Cadastro extends JFrame {
 			public void run() {
 				try {
 					Cadastro frame = new Cadastro();
-					frame.setVisible(true);
 					frame.setResizable(false);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -57,6 +57,8 @@ public class Cadastro extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
 		
 		JLabel lblCod = new JLabel("C\u00F3digo(1-5000)");
 		lblCod.setFont(new Font("Arial", Font.PLAIN, 14));
