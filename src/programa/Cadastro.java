@@ -58,8 +58,6 @@ public class Cadastro extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		
-		
 		JLabel lblCod = new JLabel("C\u00F3digo(1-5000)");
 		lblCod.setFont(new Font("Arial", Font.PLAIN, 14));
 		lblCod.setBounds(43, 33, 155, 14);
@@ -138,53 +136,56 @@ public class Cadastro extends JFrame {
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
 		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				boolean liberado = true; 
-				
-				if(Integer.parseInt(txtCod.getText()) > 5000 || Integer.parseInt(txtCod.getText()) < 1) {
-					txtCod.setText("");
-					JOptionPane.showMessageDialog(null,"Insira um código de 1 a 5000");	
-					liberado = false;
-				}
-				
-				if((txtCod.getText().trim().equals("")) || (txtNome.getText().trim().equals("")) ||
-				(txtCpf.getText().trim().equals("")) || (txtEmail.getText().trim().equals("")) || 
-				(txtDDD.getText().trim().equals("")) || (txtTel.getText().trim().equals("")) ||
-				(txtPass.getPassword().length == 0))
-				{
-					JOptionPane.showMessageDialog(null,"Preencha todos os campos");	
-					liberado = false;
-				}	
+			public void actionPerformed(ActionEvent e) {				
+				try {
+					boolean liberado = true; 
 					
-				
-				if(liberado) {
-					try {
-						String senha = new String(txtPass.getPassword());
-						String senhaCripto = Criptografia.Cripto(senha);
-						
-						String telefone = "(" + txtDDD.getText() + ")" + txtTel.getText();
-						Nutricionista nutri = new Nutricionista(Integer.parseInt(txtCod.getText().trim()),
-																				txtNome.getText(),
-																				txtCpf.getText(),
-																				txtEmail.getText().trim(),
-																				telefone,
-																				senhaCripto);
-						Nutricionistas.incluir(nutri);
-						JOptionPane.showMessageDialog(null,"Cadastrado com sucesso!");
-						Cadastro.this.dispose();
-						
-						txtCod.setText(""); txtNome.setText(""); txtCpf.setText(""); txtEmail.setText(""); txtTel.setText(""); txtPass.setText("");
+					if(Integer.parseInt(txtCod.getText()) > 5000 || Integer.parseInt(txtCod.getText()) < 1) {
+						txtCod.setText("");
+						throw new Exception("Insira um código de 1 a 5000");	
 					}
-					catch(Exception ex) {
-						if(ex.getMessage().equals("Nutricionista já cadastrado")) {
-							txtCod.setText("");
-							JOptionPane.showMessageDialog(null,"Código já está sendo utilizado\nTente outro");												
+					
+					if((txtCod.getText().trim().equals("")) || (txtNome.getText().trim().equals("")) ||
+					(txtCpf.getText().trim().equals("")) || (txtEmail.getText().trim().equals("")) || 
+					(txtDDD.getText().trim().equals("")) || (txtTel.getText().trim().equals("")) ||
+					(txtPass.getPassword().length == 0))
+					{
+						throw new Exception("Preencha todos os campos");	
+						liberado = false;
+					}	
+						
+					
+					if(liberado) {
+						try {
+							String senha = new String(txtPass.getPassword());
+							String senhaCripto = Criptografia.Cripto(senha);
+							
+							String telefone = "(" + txtDDD.getText() + ")" + txtTel.getText();
+							Nutricionista nutri = new Nutricionista(Integer.parseInt(txtCod.getText().trim()),
+																					txtNome.getText(),
+																					txtCpf.getText(),
+																					txtEmail.getText().trim(),
+																					telefone,
+																					senhaCripto);
+							Nutricionistas.incluir(nutri);
+							JOptionPane.showMessageDialog(null,"Cadastrado com sucesso!");
+							Cadastro.this.dispose();
+							
+							txtCod.setText(""); txtNome.setText(""); txtCpf.setText(""); txtEmail.setText(""); txtTel.setText(""); txtPass.setText("");
+						}
+						catch(Exception ex) {
+							if(ex.getMessage().equals("Nutricionista já cadastrado")) {
+								txtCod.setText("");
+								JOptionPane.showMessageDialog(null,"Código já está sendo utilizado\nTente outro");												
+							}						
+							else
+								JOptionPane.showMessageDialog(null,"Verifique os valores colocados");		
 						}						
-						else
-							JOptionPane.showMessageDialog(null,"Verifique os valores colocados");		
-					}						
-				}		
+					}
+				}
+				catch(Exception ex) {
+					
+				}
 			}
 		});
 		btnCadastrar.setBounds(186, 286, 119, 23);
