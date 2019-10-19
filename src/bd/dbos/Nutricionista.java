@@ -44,7 +44,7 @@ public class Nutricionista {
 	
 	public void setCodigo(int codigo) throws Exception {
 		if(codigo <= 0 || codigo > 5000) {
-			throw new Exception("Código inválido");
+			throw new Exception("Código deve estar entre 0 e 5000");
 		}
 		
 		this.codigo = codigo;
