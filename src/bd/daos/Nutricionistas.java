@@ -6,6 +6,12 @@ import bd.core.*;
 import bd.dbos.*;
 
 public class Nutricionistas {
+	/**
+	 Método que confere se o nutricionista está cadastrado
+	 * @param codigo é o código do usuário que será procurado
+	 * @return se o usuário está cadastrado
+	 * @throws Exception se ocorrer algum erro na procura
+	 */
 	public static boolean cadastrado(int codigo) throws Exception
 	{
 		boolean retorno = false;
@@ -26,6 +32,11 @@ public class Nutricionistas {
 		return retorno;
 	}
 	
+	/**
+	 Método que inclui um novo nutricionista
+	 * @param nutri objeto da classe Nutricionista que será incluido
+	 * @throws Exception se o objeto dado for inválidos
+	 */
 	public static void incluir(Nutricionista nutri) throws Exception
 	{
 		if(nutri == null)
@@ -53,6 +64,11 @@ public class Nutricionistas {
 		}
 	}
 	
+	/**
+	 Método que altera as informações de um nutricionista já inserido
+	 * @param nutri objeto da classe nutricionsta que será alterado
+	 * @throws Exception se o objeto for inválido ou se ocorrer erros na conexão
+	 */
 	public static void alterar(Nutricionista nutri) throws Exception
 	{
 		if(nutri == null)
@@ -80,6 +96,12 @@ public class Nutricionistas {
 		}
 	}
 	
+	/**
+	 Método que retorna um nutricionista.
+	 * @param codigo é o código do nutricionista a ser retornado
+	 * @return o objeto do nutricionista do respectivo código
+	 * @throws Exception se o nutricionista não estiver cadastrado, ou problemas no bd
+	 */
 	public static Nutricionista getNutricionista(int codigo) throws Exception 
 	{
 		Nutricionista nutri = null;

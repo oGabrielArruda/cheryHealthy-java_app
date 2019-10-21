@@ -6,26 +6,14 @@ import bd.core.*;
 import bd.dbos.*;
 
 public class Dietas {
-	public static boolean cadastrado(int codUsuario) throws Exception
-	{
-		boolean retorno = false;
-		try 
-		{
-			String sql;
-			sql = "select * from Dieta where codUsuario = ?";
-			BDSQLServer.COMANDO.prepareStatement(sql);
-			BDSQLServer.COMANDO.setInt(1,codUsuario);
-			MeuResultSet resultado = (MeuResultSet)BDSQLServer.COMANDO.executeQuery();
-			retorno = resultado.first();
-		}
-		catch(Exception ex) 
-		{
-			throw new Exception("Erro ao procurar dieta");
-		}
-		
-		return retorno;
-	}
-	
+	/**
+	 Método que insere a dieta na tabela.
+	 Insere o texto digitado no campo de determinado dia de determinado usuário
+	 * @param codUsuario o código do usuário que terá sua dieta alterada
+	 * @param dieta a string que será inserida no banco
+	 * @param dia a string que representa o dia da semana que a dieta será válida
+	 * @throws Exception se ocorrer algum erro na inserção
+	 */
 	public static void inserir(int codUsuario, String dieta, String dia) throws Exception
 	{
 		if(dieta.length() > 300)
