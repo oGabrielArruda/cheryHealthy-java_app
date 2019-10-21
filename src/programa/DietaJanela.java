@@ -85,6 +85,7 @@ public class DietaJanela extends JFrame {
 		btnVerCdigos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TodosUsuarios tdsUsers = new TodosUsuarios();
+				tdsUsers.setResizable(false);
 				tdsUsers.setVisible(true);
 				tdsUsers.setCodNutricionista(codNutricionista);
 				tdsUsers.inserirValores();
@@ -155,16 +156,12 @@ public class DietaJanela extends JFrame {
 							dia = "sab";
 						else if(rdbtnDom.isSelected())
 							dia = "dom";
-						if(!(dia.equals(""))) 
-						{
-							int codUsuario = Integer.parseInt(txtCodUsuario.getText());
-							Dietas.inserir(codUsuario, txtDieta.getText(), dia);
-							JOptionPane.showMessageDialog(null,"Dieta inserida com sucesso!");
-						}
-						else 
-						{
-							JOptionPane.showMessageDialog(null,"Selecione o dia para implementar a dieta!");
-						}
+						if(dia.equals(""))
+							throw new Exception("Selecione o dia para implementar a dieta!");
+						
+						int codUsuario = Integer.parseInt(txtCodUsuario.getText());
+						Dietas.inserir(codUsuario, txtDieta.getText(), dia);
+						JOptionPane.showMessageDialog(null,"Dieta inserida com sucesso!");
 						
 					}
 					catch(Exception ex) 
@@ -224,7 +221,7 @@ public class DietaJanela extends JFrame {
 			JOptionPane.showMessageDialog(null,ex.getMessage());
 		}
 		
-		return true;			
+			return true;			
 		}
 	}
 
