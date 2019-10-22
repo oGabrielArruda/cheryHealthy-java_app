@@ -51,23 +51,47 @@ public class Nutricionista {
 	}
 	
 	public void setCpf(String cpf) throws Exception {
+		if(cpf == null)
+			throw new Exception("CPF inválido!");
 		this.cpf = cpf;
 	}
 	
 	public void setEmail(String email) throws Exception{
-		this.email = email;
+		if(email == null)
+			throw new Exception("Email inválido!");
+			this.email = email;
 	}
 	
 	public void setTelefone(String telefone) throws Exception {
+		if(telefone == null)
+			throw new Exception("Telefone inválido!");
 		this.telefone = telefone;
 	}
 	
 	public void setNome(String nome) throws Exception {
+		if(nome == null)
+				throw new Exception("Nome inválido!");
 		this.nome = nome;
 	}
 	
 	public void setSenha(String senha) throws Exception{
+		if(senha == null)
+			throw new Exception("Senha inválida!");
 		this.senha = senha;
+	}
+	
+	public int hashCode() {
+		int ret = 666;
+		ret = ret * 7 + new Integer(this.codigo).hashCode();
+		ret = ret * 7 + new String(this.nome).hashCode();
+		ret = ret * 7 + new String(this.cpf).hashCode();
+		ret = ret * 7 + new String(this.email).hashCode();
+		ret = ret * 7 + new String(this.telefone).hashCode();
+		ret = ret * 7 + new String(this.senha).hashCode();
+		
+		if(ret < 0)
+			ret = -ret;
+		return ret;
 	}
 	
 	public String toString() {
