@@ -6,12 +6,15 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import bd.daos.*;
@@ -22,12 +25,12 @@ import javax.swing.JOptionPane;
 public class Cadastro extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField txtCod;
+	private JFormattedTextField txtCod;
 	private JTextField txtNome;
-	private JTextField txtCpf;
+	private JFormattedTextField txtCpf;
 	private JTextField txtEmail;
-	private JTextField txtTel;
-	private JTextField txtDDD;
+	private JFormattedTextField txtTel;
+	private JFormattedTextField txtDDD;
 	private JPasswordField txtPass;
 
 	/**
@@ -88,35 +91,63 @@ public class Cadastro extends JFrame {
 		lblSenha.setBounds(43, 239, 110, 14);
 		contentPane.add(lblSenha);
 		
-		txtCod = new JTextField();
+		txtCod = new JFormattedTextField();
 		txtCod.setBounds(186, 31, 86, 20);
-		contentPane.add(txtCod);
 		txtCod.setColumns(10);
+		try 
+		{
+			MaskFormatter mask = new MaskFormatter("####");
+			mask.install(txtCod);
+		}
+		catch(Exception e) 
+		{}
+		contentPane.add(txtCod);
 		
 		txtNome = new JTextField();
 		txtNome.setColumns(10);
 		txtNome.setBounds(186, 74, 242, 20);
 		contentPane.add(txtNome);
-		
-		txtCpf = new JTextField();
+
+		txtCpf = new JFormattedTextField();
 		txtCpf.setColumns(10);
-		txtCpf.setBounds(186, 113, 242, 20);
+		txtCpf.setBounds(186, 113, 242, 20);	
+		try 
+		{
+			MaskFormatter mask = new MaskFormatter("###.###.###-##");
+			mask.install(txtCpf);
+		}
+		catch(Exception e) {}
 		contentPane.add(txtCpf);
+		
 		
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
 		txtEmail.setBounds(186, 152, 242, 20);
 		contentPane.add(txtEmail);
 		
-		txtTel = new JTextField();
+		txtTel = new JFormattedTextField();
 		txtTel.setColumns(10);
 		txtTel.setBounds(227, 194, 201, 20);
+		try 
+		{
+			MaskFormatter mask = new MaskFormatter("####-####");
+			mask.install(txtTel);
+		}
+		catch(Exception e) 
+		{}
 		contentPane.add(txtTel);
 		
-		txtDDD = new JTextField();
+		txtDDD = new JFormattedTextField();
 		txtDDD.setBounds(184, 194, 33, 20);
+		txtDDD.setColumns(2);
+		try 
+		{
+			MaskFormatter mask = new MaskFormatter("##");
+			mask.install(txtDDD);
+		}
+		catch(Exception e) 
+		{}
 		contentPane.add(txtDDD);
-		txtDDD.setColumns(10);
 		
 		JLabel lblDdd = new JLabel("DDD");
 		lblDdd.setBounds(186, 213, 69, 14);
