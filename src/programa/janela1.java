@@ -74,36 +74,24 @@ public class janela1 {
 		txtId.setColumns(10);
 		
 		JButton btnLogar = new JButton("Entrar");
+		/**
+		 * Click do botão de logar
+		 * Os valores inseridos são armazenados e tenta-se logar passando o código e a senha inserida
+		 * Caso as informações não condizerem ou tiverem erradas, a mensagem de erro é exibida 
+		 * E por fim, em caso de erro, as caixas de texto são limpas
+		 */
 		btnLogar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				String codStr = txtId.getText();
 				String senha = new String(txtSenha.getPassword());
 				
-				try 
-				{
-					if(codStr.trim().equals("") || senha.trim().equals(""))
-						throw new Exception("Preencha todos os campos!");					
-					
-					int codigo = Integer.parseInt(codStr);
-					
-					if(!Nutricionistas.cadastrado(codigo))
-						throw new Exception("Código incorreto!");
-					
-					Nutricionista nutri = Nutricionistas.getNutricionista(codigo);
-							
-							
-					if(!(Criptografia.Cripto(senha).equals(nutri.getSenha())))
-						throw new Exception("Senha incorreta!");
-						
-					Logado1 jan = new Logado1();
-					jan.setCodNutriLogado(codigo);
-					jan.setVisible(true);
-					janela1.this.frame.dispose();																														
+				try {
+					logar(codStr, senha); // tentativa de login com o codigo e a senha digitados
 				}
 				catch(Exception ex) {
-					JOptionPane.showMessageDialog(null,ex.getMessage());
+					JOptionPane.showMessageDialog(null, ex.getMessage()); // caso as informações estejam incorretas, mensagem de erro é exibida
 				}
-				finally {
+				finally { // em caso de erro, limpa-se por último as caixas de texto
 					txtId.setText("");
 					txtSenha.setText("");
 				}
@@ -118,10 +106,14 @@ public class janela1 {
 		frame.getContentPane().add(lblCadastro);
 		
 		JButton btnGoCadastro = new JButton("Cadastrar-se");
+		/**
+		 * Click do botão de cadastro.
+		 * Caso o usuário não tenha uma conta ainda, ao clickar neste botão, abre-se uma nova janela de cadastro
+		 */
 		btnGoCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Cadastro janelaCad = new Cadastro();
-				janelaCad.setVisible(true);
+				Cadastro janelaCad = new Cadastro(); // instancia uma nova janela de cadastro
+				janelaCad.setVisible(true); 
 			}
 		});
 		btnGoCadastro.setBounds(344, 328, 120, 23);
@@ -130,5 +122,37 @@ public class janela1 {
 		txtSenha = new JPasswordField();
 		txtSenha.setBounds(262, 171, 152, 20);
 		frame.getContentPane().add(txtSenha);
+	}
+	
+	/**
+	 * Método que tenta logar na conta do Nutricionista.
+	 * São recebidos o código e a senha inseridas e são feitas validações para esses valores
+	 * Caso não forem válidos, ou as informações de código e senha não condizerem, é lançada a exceção
+	 * @param codStr código digitado pelo usuário
+	 * @param senha senha digitada pelo usuário
+	 * @throws Exception caso a senha ou o login estiverem errados
+	 */
+	private void logar(String codStr, String senha) throws Exception {
+		// Validação do código e da senha
+			if(codStr.trim().equals("") || senha.trim().equals(""))
+				throw new Exception("Preencha todos os campos!");					
+			
+			int codigo = Integer.parseInt(codStr);
+			
+			if(!Nutricionistas.cadastrado(codigo))
+				throw new Exception("Código incorreto!");
+			
+			// código validado, então instancia-se o nutricionista com esse código
+			Nutricionista nutri = Nutricionistas.getNutricionista(codigo);
+					
+			// se a senha estiver errada		
+			if(!(Criptografia.Cripto(senha).equals(nutri.getSenha())))
+				throw new Exception("Senha incorreta!");
+			
+			// Exibição da nova janela
+			Logado1 jan = new Logado1();
+			jan.setCodNutriLogado(codigo);
+			jan.setVisible(true);
+			janela1.this.frame.dispose();																														
 	}
 }
