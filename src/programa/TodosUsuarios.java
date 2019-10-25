@@ -84,21 +84,32 @@ public class TodosUsuarios extends JFrame {
 		
 	}
 	
+	/**
+	 * Setter do atributo codNutricionista.
+	 * Seta o atributo com o código passado como parâmetro.
+	 * Utilizado para exibir os valores do nutricionista pertencente ao respectivo código 
+	 * @param codigo código do nutricionista que está logado
+	 */
 	public void setCodNutricionista(int codigo) 
 	{
-		this.codNutricionista = codigo;
+		this.codNutricionista = codigo; 
 	}
 	
+	/**
+	 * Insere as informações de usuários na tabela.
+	 * Método insere o código, nome, email, telefone, peso e altura de todos usuários pertencentes ao nutricionista que está logado
+	 * Usa-se o atributo codNutricionista da aba para efetuar uma lista com todos respectivos usuários
+	 */
 	public void inserirValores() 
 	{
 		try 
 		{
 			DefaultTableModel modelo = (DefaultTableModel) table.getModel(); // pega o modelo da tabela para inserir linhas
 			
-			List<Usuario> list = Usuarios.selecionarUsuarios(this.codNutricionista); // lista com todos usuarios do nutricionista
+			List<Usuario> list = Usuarios.selecionarUsuarios(this.codNutricionista); // guarda todos os usuários do nutricionista
 			
 			
-			for(int i = 0; i < list.size(); i++) 
+			for(int i = 0; i < list.size(); i++) // percorre a lista
 			{
 				Usuario user = list.get(i);
 				
@@ -110,7 +121,7 @@ public class TodosUsuarios extends JFrame {
 						user.getAltura(), 
 						user.getPontuacao()};
 				
-				modelo.addRow(linha);
+				modelo.addRow(linha); // insere a linha
 			}
 		}
 		catch(Exception ex) 
