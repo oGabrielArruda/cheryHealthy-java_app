@@ -34,10 +34,18 @@ public class Logado1 extends JFrame {
 		});
 	}
 	
-	
+	/**
+	 * Setter do código do nutricionista
+	 * Seta o atributo do código do nutricionista logado com o valor passado como parâmetro
+	 * @param codNutricionista código a ser setado
+	 */
 	public void setCodNutriLogado(int codNutricionista) {
 		this.codNutricionista = codNutricionista;
 	}
+	/**
+	 * Get do código do nutricionista
+	 * @return o valor do atributo do código
+	 */
 	public int getCodNutriLogado() {
 		return this.codNutricionista;
 	}
@@ -59,18 +67,27 @@ public class Logado1 extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Ver Usu\u00E1rios");
+		/**
+		 * Click no botão de exibir todos usuários
+		 * Abre a janela com a tabela de todos usuários
+		 * E após abrir, chama o método que insere os valores na JTable.
+		 */
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TodosUsuarios tdsUsers = new TodosUsuarios();
 				tdsUsers.setVisible(true);
-				tdsUsers.setCodNutricionista(codNutricionista);
-				tdsUsers.inserirValores();
+				tdsUsers.setCodNutricionista(codNutricionista); 
+				tdsUsers.inserirValores(); // insere a informações na tabela
 			}
 		});
 		btnNewButton.setBounds(150, 232, 136, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Enviar Dietas");
+		/**
+		 * Click no botão de Dieta
+		 * Abre a janela que permite o nutricionista enviar dietas aos seus usuários
+		 */
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				DietaJanela jan = new DietaJanela();
@@ -82,6 +99,11 @@ public class Logado1 extends JFrame {
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Editar Perfil");
+		
+		/**
+		 * Click no botão de editar perfil.
+		 * Abre a janela de edição de perfil do nutricionista
+		 */
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EditarPerfil editJan = new EditarPerfil();
