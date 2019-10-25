@@ -166,27 +166,15 @@ public class Cadastro extends JFrame {
 		contentPane.add(txtPass);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		/**
+		 * Click do botão cadastrar.
+		 * Tenta-se realizar o cadastro com os valores inseridos
+		 * Em caso de excessão no método cadastrar, que valida e cadastra o usuário, é exibida a mensagem de erro
+		 */
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
 				try {
-					if((txtCod.getText().trim().equals("")) || (txtNome.getText().trim().equals("")) ||
-					(txtCpf.getText().trim().equals("")) || (txtEmail.getText().trim().equals("")) || 
-					(txtDDD.getText().trim().equals("")) || (txtTel.getText().trim().equals("")) ||
-					(txtPass.getPassword().length == 0))
-						throw new Exception("Preencha todos os campos");	
-					
-					String senhaCripto = Criptografia.Cripto(new String(txtPass.getPassword()));
-							
-					String telefone = "(" + txtDDD.getText() + ")" + txtTel.getText();
-					Nutricionista nutri = new Nutricionista(Integer.parseInt(txtCod.getText().trim()),
-																					txtNome.getText(),
-																					txtCpf.getText(),
-																					txtEmail.getText().trim(),
-																					telefone,
-																					senhaCripto);
-					Nutricionistas.incluir(nutri);
-					JOptionPane.showMessageDialog(null,"Cadastrado com sucesso!");
-					Cadastro.this.dispose();
+					cadastrar();
 				}
 				catch(Exception ex) {
 					JOptionPane.showMessageDialog(null,ex.getMessage());
@@ -195,5 +183,32 @@ public class Cadastro extends JFrame {
 		});
 		btnCadastrar.setBounds(186, 286, 119, 23);
 		contentPane.add(btnCadastrar);
+	}
+	
+	/**
+	 * Cadastra o usuário.
+	 * Valida as informações digitadas, e em caso de algum erro é lançada a exceção
+	 * Caso não ocorram erros na digitação e na instanciação do Nutricionista, cadastra-se o novo Nutricionista
+	 * @throws Exception se alguma informação não estiver condizente com os atributos do cadastro
+	 */
+	private void cadastrar() throws Exception{
+		if((txtCod.getText().trim().equals("")) || (txtNome.getText().trim().equals("")) ||
+				(txtCpf.getText().trim().equals("")) || (txtEmail.getText().trim().equals("")) || 
+				(txtDDD.getText().trim().equals("")) || (txtTel.getText().trim().equals("")) ||
+				(txtPass.getPassword().length == 0))
+					throw new Exception("Preencha todos os campos");	
+				
+				String senhaCripto = Criptografia.Cripto(new String(txtPass.getPassword()));
+						
+				String telefone = "(" + txtDDD.getText() + ")" + txtTel.getText();
+				Nutricionista nutri = new Nutricionista(Integer.parseInt(txtCod.getText().trim()),
+																				txtNome.getText(),
+																				txtCpf.getText(),
+																				txtEmail.getText().trim(),
+																				telefone,
+																				senhaCripto);
+				Nutricionistas.incluir(nutri);
+				JOptionPane.showMessageDialog(null,"Cadastrado com sucesso!");
+				Cadastro.this.dispose();
 	}
 }
