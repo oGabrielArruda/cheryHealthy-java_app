@@ -155,5 +155,22 @@ public class Usuario {
 			return false;
 		return true;
 	}
-
+	
+	
+	public String toString() 
+	{
+		String ret = "";
+		ret += "Codigo: " + this.codUsuario;
+		ret += "Nome: " + this.nome;
+		ret += "Cpf: " + this.cpf;
+		ret += "Email: " + this.email;
+		ret += "Telefone: " + this.telefone;
+		ret += "Senha: " + this.senha;
+		ret += "Codigo Nutricionista: " + this.codNutricionista;
+		ret += "Altura: " + this.altura;
+		ret += "Peso: " + this.peso;
+		ret += "Pontuacao: " + this.pontuacao;
+		
+		return ret;
+	}
 }
