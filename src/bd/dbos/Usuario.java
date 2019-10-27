@@ -136,4 +136,24 @@ public class Usuario {
 	{
 		return this.pontuacao;
 	}
+	
+	public boolean equals(Object obj) 
+	{
+		if(obj == null)
+			return false;
+		if(this == obj)
+			return true;
+		if(this.getClass() != obj.getClass())
+			return false;
+		
+		Usuario user = (Usuario)obj;
+		
+		if(this.codUsuario != user.codUsuario || this.nome != user.nome || this.cpf != user.cpf
+		|| this.email != user.email || this.telefone != user.telefone || this.senha != user.senha
+		|| this.codNutricionista != user.codNutricionista || this.altura != user.altura
+		|| this.peso != user.peso || this.pontuacao != user.pontuacao)
+			return false;
+		return true;
+	}
+
 }
