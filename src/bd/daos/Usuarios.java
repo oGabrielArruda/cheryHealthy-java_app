@@ -9,6 +9,14 @@ import bd.core.*;
 import bd.dbos.*;
 
 public class Usuarios {
+	/**
+	 * Verifica se o usuário está cadastrado.
+	 * É passado um código como parâmetro, e uma busca é realizada a partir desse código
+	 * se existr um usuário com esse código, retorna true, se não retorna false
+	 * @param codigo do usuário a ser verificado
+	 * @return retorna true se o usuário estiver cadastrado
+	 * @throws Exception em caso de problemas com conexão ao banco de dados
+	 */
 	public static boolean cadastrado(int codigo) throws Exception
 	{
 		boolean retorno = false;
@@ -29,6 +37,14 @@ public class Usuarios {
 		return retorno;
 	}
 	
+	
+	/**
+	 * Altera o usuário.
+	 * É passado um objeto da classe Usuário como parâmetro
+	 * Assim, é realizado um update na tabela sql, com os novos atributos do usuário que manterá seu código
+	 * @param user Usuário a ser editado
+	 * @throws Exception se o user for null, ou se ocorrer problemas de conexão
+	 */
 	public static void alterar(Usuario user) throws Exception
 	{
 		if(user == null)
@@ -68,6 +84,17 @@ public class Usuarios {
 		}
 	}
 	
+	/**
+	 * Recupera os valores de deterimando usuário.
+	 * É passado um código como parâmetro
+	 * Executa-se um select no banco de dados que retorna os valores do usuário selecionado
+	 * Caso o usuário não exista, é lançada exceção
+	 * Então, instancia-se um novo usuário de acordo com os valores selecionados
+	 * Por fim, esse usuário é retornado
+	 * @param codigo código do usuário a ser pegado
+	 * @return o usuário pertencente ao código
+	 * @throws Exception se o código não existir ou se ocorrer problemas com o banco de dados
+	 */
 	public static Usuario getUsuario(int codigo) throws Exception 
 	{
 		Usuario user = null;
