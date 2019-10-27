@@ -15,7 +15,7 @@ public class Usuarios {
 	 * se existr um usuário com esse código, retorna true, se não retorna false
 	 * @param codigo do usuário a ser verificado
 	 * @return retorna true se o usuário estiver cadastrado
-	 * @throws Exception em caso de problemas com conexão ao banco de dados
+	 * @throws Exception em caso de problemas com conexão ao banco de dados.
 	 */
 	public static boolean cadastrado(int codigo) throws Exception
 	{
@@ -125,6 +125,18 @@ public class Usuarios {
 		return user;
 	}
 	
+	/**
+	 * Recupera todos os usuários cadastrados pertencentes à determinado nutricionista.
+	 * É instanciada uma lista do objeto Usuário.
+	 * Em seguida, é feito um select no banco de dados.
+	 * O select, recupera o valor de todos usuários pertencentes ao nutricionista que teve seu código passado como parâmetro.
+	 * Os dados do select são percorridos, e para cada valor, é instanciado um novo usuário.
+	 * O usuário instanciado é adicionado à lista.
+	 * Por fim, a lista é retornada.
+	 * @param codNutri código do nutricionista que terá seus usuários selecionados
+	 * @return uma lista com todos usuários pertencentes ao nutricionista
+	 * @throws Exception em caso de erro de conexão com o Banco de Dados.
+	 */
 	public static List<Usuario> selecionarUsuarios(int codNutri) throws Exception
 	{
 		List<Usuario> ret = new ArrayList<Usuario>();
