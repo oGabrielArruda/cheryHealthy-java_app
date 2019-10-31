@@ -23,8 +23,8 @@ public class Usuario {
 	
 	public void setCodUsuario(int cod) throws Exception
 	{
-		if(cod < 0)
-			throw new Exception("Código inválido");
+		//if(cod < 0)
+			//throw new Exception("Código inválido");
 		this.codUsuario = cod;
 	}
 	
@@ -72,19 +72,18 @@ public class Usuario {
 	public void setPeso(float peso) throws Exception
 	{
 		if(peso < 0)
-			throw new Exception("Código inválido");
+			throw new Exception("Peso inválido");
 		this.peso = peso;
 	}
 	public void setAltura(float altura) throws Exception
 	{
 		if(altura < 0)
-			throw new Exception("Código inválido");
+			throw new Exception("Altura inválida");
 		this.altura = altura;
 	}
 	public void setPontuacao(int pontuacao) throws Exception
 	{
-		if(pontuacao < 0)
-			throw new Exception("Código inválido");
+		this.pontuacao = pontuacao;
 	}
 	
 	public int getCodUsuario() 

@@ -149,10 +149,9 @@ public class Usuarios {
 			BDSQLServer.COMANDO.setInt(1, codNutri);
 			
 			MeuResultSet resultado = (MeuResultSet) BDSQLServer.COMANDO.executeQuery();
-			
+			int i = 0;
 			while(resultado.next()) 
 			{
-				System.out.println("Cod" + codNutri);
 				user = new Usuario(resultado.getInt("codUsuario"),
 								   resultado.getString("nome"),
 								   resultado.getString("cpf"),
@@ -164,10 +163,12 @@ public class Usuarios {
 								   resultado.getInt("codNutricionista"),
 								   resultado.getInt("Pontuação"));
 				ret.add(user);
+				i++;
 			}
 		}
 		catch(Exception ex)
 		{
+			System.out.println(ex.getMessage());
 			throw new Exception("Erro ao procurar usuários");
 		}
 		
