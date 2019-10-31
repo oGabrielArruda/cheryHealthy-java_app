@@ -172,4 +172,25 @@ public class Usuario {
 		
 		return ret;
 	}
+	
+	public int hashCode() 
+	{
+		int ret = 356;
+		ret = ret*7 + new Integer(this.codUsuario).hashCode();
+		ret = ret*7 + this.nome.hashCode();
+		ret = ret*7 + this.cpf.hashCode();
+		ret = ret*7 + this.email.hashCode();
+		ret = ret*7 + this.telefone.hashCode();
+		ret = ret*7 + this.senha.hashCode();
+		ret = ret*7 + new Float(this.peso).hashCode();
+		ret = ret*7 + new Float(this.altura).hashCode();
+		ret = ret*7 + this.email.hashCode();
+		ret = ret*7 + new Integer(this.codNutricionista).hashCode();
+		ret = ret*7 + new Integer(this.pontuacao).hashCode();
+		
+		if(ret<0)
+			ret = -ret;
+			
+		return ret;
+	}
 }
