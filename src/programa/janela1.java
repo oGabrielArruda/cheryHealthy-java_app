@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class janela1 {
 
@@ -53,6 +55,8 @@ public class janela1 {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.WHITE);
+		frame.getContentPane().setForeground(Color.WHITE);
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 659, 449);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -122,6 +126,11 @@ public class janela1 {
 		txtSenha = new JPasswordField();
 		txtSenha.setBounds(262, 171, 152, 20);
 		frame.getContentPane().add(txtSenha);
+		
+		JLabel label = new JLabel("New label");
+		label.setIcon(new ImageIcon(janela1.class.getResource("/imgs/logo.png")));
+		label.setBounds(144, 30, 395, 95);
+		frame.getContentPane().add(label);
 	}
 	
 	/**

@@ -145,7 +145,6 @@ public class Usuarios {
 		try 
 		{
 			String sql = "select * from Usuario where codNutricionista = ? order by nome";
-			
 			BDSQLServer.COMANDO.prepareStatement(sql);
 			BDSQLServer.COMANDO.setInt(1, codNutri);
 			
@@ -153,6 +152,7 @@ public class Usuarios {
 			
 			while(resultado.next()) 
 			{
+				System.out.println("Cod" + codNutri);
 				user = new Usuario(resultado.getInt("codUsuario"),
 								   resultado.getString("nome"),
 								   resultado.getString("cpf"),
@@ -162,7 +162,7 @@ public class Usuarios {
 								   resultado.getFloat("peso"),
 								   resultado.getFloat("altura"),
 								   resultado.getInt("codNutricionista"),
-								   resultado.getInt("pontuação"));
+								   resultado.getInt("Pontuação"));
 				ret.add(user);
 			}
 		}

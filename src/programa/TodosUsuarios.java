@@ -105,9 +105,7 @@ public class TodosUsuarios extends JFrame {
 		try 
 		{
 			DefaultTableModel modelo = (DefaultTableModel) table.getModel(); // pega o modelo da tabela para inserir linhas
-			
 			List<Usuario> list = Usuarios.selecionarUsuarios(this.codNutricionista); // guarda todos os usuários do nutricionista
-			
 			
 			for(int i = 0; i < list.size(); i++) // percorre a lista
 			{
