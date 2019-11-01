@@ -1,6 +1,6 @@
 package bd.dbos;
 
-public class Nutricionista {
+public class Nutricionista implements Cloneable {
 	private int codigo;
 	private String email, cpf, telefone, nome, senha;
 	

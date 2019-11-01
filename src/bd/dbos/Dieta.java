@@ -1,7 +1,7 @@
 package bd.dbos;
 
 public class Dieta {
-	private int codDieta, codNutricionista, codUsuario;
+	private int codNutricionista, codUsuario;
 	private String seg, ter, qua, qui, sex, sab, dom;
 	
 	
@@ -62,5 +62,53 @@ public class Dieta {
 		if(dieta.length() > 500)
 			throw new Exception("Digite menos que 500 caracteres");
 		this.dom = dieta;
+	}
+	
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		if(this == obj)
+			return true;
+		if(this.getClass() != obj.getClass())
+			return false;
+		Dieta diet = (Dieta)obj;
+		
+		if(this.codUsuario != diet.codUsuario || this.codNutricionista != diet.codNutricionista)
+			return false;
+		
+		if(!this.seg.equals(diet.seg) || !this.ter.equals(diet.ter) || !this.qua.equals(diet.qua) ||
+		this.qui.equals(diet.qui) ||!this.sex.equals(diet.sex) ||!this.sab.equals(diet.sab) || !this.dom.equals(diet.dom))
+			return false;
+		return true;
+	}
+	
+	public String toString() {
+		String ret = "";
+		ret += "Codigo Nutricionista: " + this.codNutricionista +"/n";
+		ret+= "Codigo Usuario: " + this.codUsuario +"/n";
+		ret+= "Segunda-Feira: " + this.seg +"/n";
+		ret += "Terça-Feira: " + this.ter+"/n";
+		ret += "Quarta-Feira: " + this.qua+"/n";
+		ret += "Quinta-Feira: " + this.qui+"/n";
+		ret += "Sexta-Feira: " + this.sex+"/n";
+		ret += "Sabado: " + this.sab+"/n";
+		ret += "Domingo: " + this.dom;
+		
+		return ret;
+	}
+	
+	public int hashCode() {
+		int ret = 356;
+		ret = ret*7 + new Integer(this.codNutricionista).hashCode();
+		ret = ret*7 + new Integer(this.codUsuario).hashCode();
+		ret = ret*7 + this.seg.hashCode();
+		ret = ret*7 + this.ter.hashCode();
+		ret = ret*7 + this.qua.hashCode();
+		ret = ret*7 + this.qui.hashCode();
+		ret = ret*7 + this.sex.hashCode();
+		ret = ret*7 + this.sab.hashCode();
+		ret = ret*7 + this.dom.hashCode();
+		
+		return ret;
 	}
 }
