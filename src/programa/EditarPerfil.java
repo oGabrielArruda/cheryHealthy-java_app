@@ -31,7 +31,6 @@ public class EditarPerfil extends JFrame {
 	private JTextField txtTel;
 	private JPasswordField txtSenha;
 	private int codNutricionista;
-	private Nutricionista nutri;
 	/**
 	 * Launch the application.
 	 */
@@ -144,27 +143,31 @@ public class EditarPerfil extends JFrame {
 		contentPane.add(lblEx_2);
 		
 		JButton btnNewButton = new JButton("Alterar");
+		/**
+		 * Altera os dados do nutricionista.
+		 * Armazena-se em variáveis os valores digitados.
+		 * Instancia-se então, um novo nutricionista, passando as variáveis como parâmetro
+		 * Por fim, chama-se o método da dao que altera os valores
+		 * Se não ocorrer erros, uma mensagem de sucesso é exibida
+		 * Em caso de erros na instância ou na dao, uma mensagem é exibida ao usuário
+		 */
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String nome = txtNome.getText(), cpf = txtCpf.getText(), ddd = txtDDD.getText(), tel = txtTel.getText(),
 						email = txtEmail.getText(), senha = new String(txtSenha.getPassword());
-				
-				if(nome.isEmpty() || cpf.isEmpty() || email.isEmpty() || ddd.isEmpty() || tel.isEmpty() || senha.isEmpty())
-					JOptionPane.showMessageDialog(null,"Preencha todos os campos!");
-				else 
+				Nutricionista nutri = null;
+				try 
 				{
 					String telefone = "("+ddd+")"+tel;
+					nutri = new Nutricionista(codNutricionista, nome, cpf, email, telefone, senha);
+					Nutricionistas.alterar(nutri);
+					JOptionPane.showMessageDialog(null,"Alterado com sucesso!");
+					EditarPerfil.this.dispose();
 					
-					try 
-					{
-						Nutricionista nutri = new Nutricionista(codNutricionista, nome, cpf, email, telefone, senha);
-						Nutricionistas.alterar(nutri);
-						JOptionPane.showMessageDialog(null,"Alteração realizada com sucesso!");
-					}
-					catch(Exception ex) 
-					{
-						JOptionPane.showMessageDialog(null,"Erro ao alterar usuário");
-					}
+				}
+				catch(Exception ex)
+				{
+					JOptionPane.showMessageDialog(null,ex.getMessage());
 				}
 			}
 		});
@@ -179,6 +182,11 @@ public class EditarPerfil extends JFrame {
 		contentPane.add(txtSenha);
 		
 		JButton btnNewButton_1 = new JButton("Alterar Senha");
+		/**
+		 * Abre a janela de alteração de senha.
+		 * Instancia uma nova janela e a exibe
+		 * Por fim, seta o código de nutricionista da janela.
+		 */
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				AlterarSenha jan = new AlterarSenha();
@@ -191,16 +199,33 @@ public class EditarPerfil extends JFrame {
 	}
 	
 	
+	/**
+	 * Seta o atributo do código do nutricionista.
+	 * @param codNutricionista código do nutricionista que está utilizando a aplicação.
+	 */
 	public void setCodNutricionista(int cod) 
 	{
 		this.codNutricionista = cod;
 	}
 	
+	/**
+	 * Exibe os dados do nutricionista.
+	 * Instancia-se um novo nutricionista com o método da Dao, passando o código como parâmetro
+	 * Se ocorrer erro ao instanciar, é exibida uma mensagem ao usuário, e sai do método
+	 * Senão, exibe os valores ex textbox
+	 */
 	public void exibirDados() 
 	{
+		Nutricionista nutri = null;
 		try 
 		{
 			nutri = Nutricionistas.getNutricionista(this.codNutricionista);
+		}
+		catch(Exception ex) 
+		{
+			JOptionPane.showMessageDialog(null,ex.getMessage());
+			return;
+		}
 			txtCod.setText(nutri.getCodigo()+"");
 			txtNome.setText(nutri.getNome());
 			txtCpf.setText(nutri.getCpf());
@@ -213,10 +238,5 @@ public class EditarPerfil extends JFrame {
 			txtDDD.setText(ddd);
 			txtTel.setText(num);
 			
-		}
-		catch(Exception ex) 
-		{
-			
-		}
 	}
 }
