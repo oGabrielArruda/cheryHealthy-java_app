@@ -82,6 +82,12 @@ public class DietaJanela extends JFrame {
 		contentPane.add(lblCasoNoSaiba);
 		
 		JButton btnVerCdigos = new JButton("Ver c\u00F3digos");
+		/**
+		 * Abre a janela que exibe todos usuários.
+		 * Instancia-se a nova janela e logo em seguida, a exibe
+		 * Então, seta o atributo do código de nutricionista da janela para o código do nutricionista atual
+		 * Por fim, chama o método que exibe os valores no JTable da janela
+		 */
 		btnVerCdigos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				TodosUsuarios tdsUsers = new TodosUsuarios();
@@ -135,6 +141,15 @@ public class DietaJanela extends JFrame {
 		contentPane.add(lblSelecioneODia);
 		
 		JButton btnEnviar = new JButton("Enviar");
+		/**
+		 * Envia a dieta digitada para o usuário
+		 * Primeiro, verifica-se se o código digitado é válido
+		 * Depois, pega-se o dia desejado, através de qual radio button foi selecionado
+		 * Se nenhum dia foi escolhido, é lançada exceção
+		 * Transofrma-se em inteiro o código digitado pelo usuário
+		 * Por fim, chama o método da dao que insere a dieta, passando o código, a dieta, e o dia a ser inserida
+		 * Em caso de sucesso, uma mensagame é exibida ao usuário.
+		 */
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(codigoValido(txtCodUsuario.getText()))
@@ -186,15 +201,37 @@ public class DietaJanela extends JFrame {
 		btnEnviar.setBounds(194, 433, 89, 23);
 		contentPane.add(btnEnviar);
 	}
-	
+	/**
+	 * Seta o atributo do código do nutricionista.
+	 * @param codNutricionista código do nutricionista que está utilizando a aplicação.
+	 */
 	public void setCodNutriLogado(int codNutricionista) {
 		this.codNutricionista = codNutricionista;
 	}
 	
+	/**
+	 * Valida o código passado como parâmetro.
+	 * Primeiro, converte-se o código para inteiro. Se a conversão falhar, o catch da exceção exibirá o erro e retornará false
+	 * Depois, verifica-se se o código é negativo. Se sim, exibe mensagem de erro e retorna-se false
+	 * E por fim, os métodos da dao são chamados para ver se o usuário está cadastrado e se pertence ao nutricionista 
+	 * Se essas ultimas verificações forem falsas, é lançada exceção, que no catch exibirá o erro e retornará false.
+	 * Por fim, se todas verificações deram certo, retorna-se true
+	 * @param codigo código a ser validado
+	 * @return true se estiver certo, false se estiver falho
+	 */
 	private boolean codigoValido(String codigo) {
-		int codigoInt = Integer.parseInt(codigo);
+		int codigoInt = 0;
+		try 
+		{
+			codigoInt = Integer.parseInt(codigo);
+		}
+		catch(Exception ex) 
+		{
+			JOptionPane.showMessageDialog(null,"Código inválido!");
+			return false;
+		}
 		
-		if(codigo.isEmpty() || codigo.trim().equals("") || codigoInt < 0) 
+		if(codigoInt < 0) 
 		{
 			JOptionPane.showMessageDialog(null,"Código inválido!");
 			return false;
@@ -204,23 +241,21 @@ public class DietaJanela extends JFrame {
 		{
 			if(!(Usuarios.cadastrado(codigoInt)))
 			{
-				JOptionPane.showMessageDialog(null,"Código de usuário não cadastrado!");
-				return false;
+				throw new Exception("Código de usuário não cadastrado!");
 			}
-			
 			Usuario selecionado = Usuarios.getUsuario(codigoInt);
 			
 			if(selecionado.getCodNutricionista() != this.codNutricionista) 
 			{
-				JOptionPane.showMessageDialog(null,"Este usuário pertence à outro nutricionista!");
-				return false;
+				throw new Exception("Este usuário pertence à outro nutricionista!");			
 			}
 		}
 		catch(Exception ex) 
 		{
 			JOptionPane.showMessageDialog(null,ex.getMessage());
+			return false;
 		}
-		
+			
 			return true;			
 		}
 	}
