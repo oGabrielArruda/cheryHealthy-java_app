@@ -70,6 +70,14 @@ public class AlterarSenha extends JFrame {
 		contentPane.add(lblSenhaNova);
 		
 		JButton btnAlterar = new JButton("Alterar");
+		/**
+		 * Altera a senha do usuário.
+		 * Primeiro, instancia-se um novo nutricionista chamando o método da dao, passando seu codigo como parametro
+		 * Então compara-se a senha atual digitada com a senha real
+		 * Caso forem iguais, a senha é alterada para a senha digitada
+		 * Caso forem diferentes, é lançada uma exceção que é exibida para o usuário
+		 * Após alterar a senha, a janela é fechada 
+		 */
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try 
@@ -79,9 +87,7 @@ public class AlterarSenha extends JFrame {
 					
 					if(!(Criptografia.Cripto(senhaAtual).equals(nutri.getSenha())))  // se a senha for errada
 					{
-						JOptionPane.showMessageDialog(null,"Senha Incorreta!");
-						txtSenhaAtual.setText("");
-						txtSenhaNova.setText("");
+						throw new Exception("Senha incorreta");
 					}
 					else 
 					{
@@ -94,7 +100,9 @@ public class AlterarSenha extends JFrame {
 				}
 				catch(Exception ex) 
 				{
-					JOptionPane.showMessageDialog(null,"Erro ao alterar senha!");
+					JOptionPane.showMessageDialog(null,ex.getMessage());
+					txtSenhaAtual.setText("");
+					txtSenhaNova.setText("");
 				}
 			}
 		});
@@ -110,6 +118,10 @@ public class AlterarSenha extends JFrame {
 		contentPane.add(txtSenhaNova);
 	}
 	
+	/**
+	 * Seta o atributo do código do nutricionista.
+	 * @param codigo do nutricionista que está utilizando a aplicação.
+	 */
 	public void setCodNutricionista(int codigo) 
 	{
 		this.codNutricionista = codigo;
