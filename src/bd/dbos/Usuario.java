@@ -23,8 +23,8 @@ public class Usuario {
 	
 	public void setCodUsuario(int cod) throws Exception
 	{
-		//if(cod < 0)
-			//throw new Exception("Código inválido");
+		if(cod < 0)
+			throw new Exception("Código inválido");
 		this.codUsuario = cod;
 	}
 	
