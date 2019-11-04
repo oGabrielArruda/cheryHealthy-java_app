@@ -148,7 +148,7 @@ public class Nutricionista implements Cloneable {
 	}
 	
 	/**
-	 * Retorna o código hash da classe
+	 * Retorna o código hash da instância
 	 */
 	public int hashCode() {
 		int ret = 666;
