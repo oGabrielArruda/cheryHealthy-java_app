@@ -34,6 +34,78 @@ public class Dieta {
 	}
 	
 	/**
+	 * Pega o valor do atributo codNutri
+	 * @return o código do nutricionista responsável pela dieta
+	 */
+	public int getCodNutri() {
+		return this.codNutricionista;
+	}
+	
+	/**
+	 * Pega o valor do atributo codUsuario
+	 * @return o código do usuário pertencente a dieta
+	 */
+	public int getCodUsuario() {
+		return this.codUsuario;
+	}
+	
+	/**
+	 * Pega o valor do atributo seg.
+	 * @return a string da dieta para segunda feira
+	 */
+	public String getSeg() {
+		return this.seg;
+	}
+	
+	/**
+	 * Pega o valor do atributo ter.
+	 * @return a string da dieta para terca feira
+	 */
+	public String getTer() {
+		return this.ter;
+	}
+	
+	/**
+	 * Pega o valor do atributo qua.
+	 * @return a string da dieta para quarta feira
+	 */
+	public String getQua() {
+		return this.qua;
+	}
+	
+	/**
+	 * Pega o valor do atributo qui.
+	 * @return a string da dieta para quinta feira
+	 */
+	public String getQui() {
+		return this.qui;
+	}
+	
+	/**
+	 * Pega o valor do atributo sex.
+	 * @return a string da dieta para sexta feira
+	 */
+	public String getSex() {
+		return this.sex;
+	}
+	
+	/**
+	 * Pega o valor do atributo sab.
+	 * @return a string da dieta para sabado
+	 */
+	public String getSab() {
+		return this.sab;
+	}
+	
+	/**
+	 * Pega o valor do atributo sab.
+	 * @return a string da dieta para domingo
+	 */
+	public String getDom() {
+		return this.dom;
+	}
+	
+	/**
 	 * Seta o valor do atributo codNutricionista
 	 * @param cod o código do nutricionista responsável pela dieta
 	 * @throws Exception caso o código negativo, ou maior que 5000
