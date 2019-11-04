@@ -4,12 +4,26 @@ public class Dieta {
 	private int codNutricionista, codUsuario;
 	private String seg, ter, qua, qui, sex, sab, dom;
 	
-	
+	/**
+	 * Construtor da classe dieta.
+	 * Seta 
+	 * Chama os métodos que setam os respectivos atributos
+	 * @param codNutri código do nutricionista responsável pela dieta
+	 * @param codUser código do usuário pertencente a essa dieta
+	 * @param seg dieta da segunda-feira
+	 * @param ter dieta da terca-feira
+	 * @param qua dieta da quarta-feira
+	 * @param qui dieta da quinta-feira
+	 * @param sex dieta da sexta-feira
+	 * @param sab dieta do sábado
+	 * @param dom dieta do domingo
+	 * @throws Exception caso algum parâmetro seja inválido
+	 */
 	public Dieta(int codNutri, int codUser, String seg, String ter, String qua, String qui,
 			String sex, String sab, String dom) throws Exception 
 	{
-		this.codNutricionista = codNutri;
-		this.codUsuario = codUser;
+		this.setCodNutricionista(codNutri);
+		this.setCodUsuario(codUser);
 		this.setSeg(seg);
 		this.setTer(ter);
 		this.setQua(qua);
@@ -19,11 +33,15 @@ public class Dieta {
 		this.setDom(dom);
 	}
 	
-	public void setCodNutricionista(int cod) {
+	public void setCodNutricionista(int cod) throws Exception {
+		if(cod < 0 || cod > 5000)
+			throw new Exception("Código inválido");
 		this.codNutricionista = cod;
 	}
 	
-	public void setCodUsuario(int cod) {
+	public void setCodUsuario(int cod) throws Exception {
+		if(cod < 0)
+			throw new Exception("Código inválido");
 		this.codUsuario = cod;
 	}
 	
