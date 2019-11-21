@@ -11,6 +11,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Logado1 extends JFrame {
 
@@ -57,13 +59,14 @@ public class Logado1 extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Bem vindo(a)!");
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 36));
-		lblNewLabel.setBounds(308, 161, 231, 42);
+		lblNewLabel.setBounds(288, 196, 231, 42);
 		contentPane.add(lblNewLabel);
 		
 		JButton btnNewButton = new JButton("Ver Usu\u00E1rios");
@@ -80,7 +83,7 @@ public class Logado1 extends JFrame {
 				tdsUsers.inserirValores(); // insere a informações na tabela
 			}
 		});
-		btnNewButton.setBounds(150, 232, 136, 29);
+		btnNewButton.setBounds(150, 293, 136, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Enviar Dietas");
@@ -95,7 +98,7 @@ public class Logado1 extends JFrame {
 				jan.setCodNutriLogado(codNutricionista);
 			}
 		});
-		btnNewButton_1.setBounds(329, 232, 145, 29);
+		btnNewButton_1.setBounds(331, 293, 145, 29);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Editar Perfil");
@@ -112,8 +115,12 @@ public class Logado1 extends JFrame {
 				editJan.exibirDados();
 			}
 		});
-		btnNewButton_2.setBounds(512, 232, 146, 29);
+		btnNewButton_2.setBounds(518, 293, 146, 29);
 		contentPane.add(btnNewButton_2);
+		
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(Logado1.class.getResource("/imgs/logo.png")));
+		lblNewLabel_1.setBounds(209, 44, 397, 110);
+		contentPane.add(lblNewLabel_1);
 	}
-	
 }
