@@ -161,6 +161,7 @@ public class janela1 {
 			// Exibição da nova janela
 			Logado1 jan = new Logado1();
 			jan.setCodNutriLogado(codigo);
+			jan.ajuste();
 			jan.setVisible(true);
 			janela1.this.frame.dispose();																														
 	}

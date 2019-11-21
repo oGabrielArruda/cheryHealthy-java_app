@@ -1,6 +1,10 @@
 package programa;
 
 import java.awt.BorderLayout;
+
+import bd.daos.Nutricionistas;
+import bd.dbos.*;
+import bd.dbos.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -64,10 +68,7 @@ public class Logado1 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Bem vindo(a)!");
-		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 36));
-		lblNewLabel.setBounds(288, 196, 231, 42);
-		contentPane.add(lblNewLabel);
+	
 		
 		JButton btnNewButton = new JButton("Ver Usu\u00E1rios");
 		/**
@@ -83,7 +84,7 @@ public class Logado1 extends JFrame {
 				tdsUsers.inserirValores(); // insere a informações na tabela
 			}
 		});
-		btnNewButton.setBounds(150, 293, 136, 29);
+		btnNewButton.setBounds(147, 319, 136, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Enviar Dietas");
@@ -98,7 +99,7 @@ public class Logado1 extends JFrame {
 				jan.setCodNutriLogado(codNutricionista);
 			}
 		});
-		btnNewButton_1.setBounds(331, 293, 145, 29);
+		btnNewButton_1.setBounds(326, 319, 145, 29);
 		contentPane.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Editar Perfil");
@@ -115,12 +116,33 @@ public class Logado1 extends JFrame {
 				editJan.exibirDados();
 			}
 		});
-		btnNewButton_2.setBounds(518, 293, 146, 29);
+		btnNewButton_2.setBounds(522, 319, 146, 29);
 		contentPane.add(btnNewButton_2);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(Logado1.class.getResource("/imgs/logo.png")));
 		lblNewLabel_1.setBounds(209, 44, 397, 110);
 		contentPane.add(lblNewLabel_1);
+	}
+	
+	/**
+	 * Cria o label de bem vindo.
+	 * Intância o nutricionista que está usando a aplicação e pega-se o seu nome
+	 * O nome é guardado em uma varíavel string e então, cria-se o label com a mensgaem de bem vindo e o nome
+	 */
+	public void ajuste() 
+	{
+		String nome = "";
+		try {
+			Nutricionista nutri = Nutricionistas.getNutricionista(this.codNutricionista);
+			nome = nutri.getNome();
+			
+		}
+		catch(Exception ex) {}
+		
+		JLabel lblBemVindo = new JLabel("Bem vindo(a) " + nome);
+		lblBemVindo.setFont(new Font("Times New Roman", Font.PLAIN, 36));
+		lblBemVindo.setBounds(209, 196, 500, 42);
+		contentPane.add(lblBemVindo);
 	}
 }
